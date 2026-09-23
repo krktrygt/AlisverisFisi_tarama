@@ -9,53 +9,49 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @EnvironmentObject private var container: AppContainer
+    @Query(sort: \ShoppingTrip.date, order: .reverse) private var trips: [ShoppingTrip]
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationStack {
+            Group {
+                if trips.isEmpty {
+                    ContentUnavailableView(
+                        "Henüz Fiş Eklenmedi",
+                        systemImage: "doc.text.viewfinder",
+                        description: Text("Fiş taramak için kamera butonunu kullanabilirsiniz.")
+                    )
+                } else {
+                    List(trips) { trip in
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(trip.store?.name ?? "Bilinmeyen Market")
+                                    .font(.headline)
+                                Spacer()
+                                Text(trip.totalAmount.formattedAsCurrency())
+                                    .font(.headline)
+                                    .foregroundStyle(.primary)
+                            }
+                            HStack {
+                                Text(trip.date, style: .date)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text("\(trip.items.count) Kalem")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .padding(.vertical, 2)
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+            .navigationTitle("CepSepeti")
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .environmentObject(AppContainer(inMemory: true))
 }

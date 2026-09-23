@@ -6,11 +6,27 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		50464888306466B7007B50CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50BE9BCD306187FC008FA250 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50BE9BD4306187FC008FA250;
+			remoteInfo = "Alisveris-fisTarama";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		50464884306466B7007B50CD /* Alisveris-fisTaramaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Alisveris-fisTaramaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50BE9BD5306187FC008FA250 /* Alisveris-fisTarama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alisveris-fisTarama.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		50464885306466B7007B50CD /* Alisveris-fisTaramaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Alisveris-fisTaramaTests";
+			sourceTree = "<group>";
+		};
 		50BE9BD7306187FC008FA250 /* Alisveris-fisTarama */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Alisveris-fisTarama";
@@ -19,6 +35,11 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		50464881306466B7007B50CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
 		50BE9BD2306187FC008FA250 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
@@ -31,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				50BE9BD7306187FC008FA250 /* Alisveris-fisTarama */,
+				50464885306466B7007B50CD /* Alisveris-fisTaramaTests */,
 				50BE9BD6306187FC008FA250 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				50BE9BD5306187FC008FA250 /* Alisveris-fisTarama.app */,
+				50464884306466B7007B50CD /* Alisveris-fisTaramaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,6 +69,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		50464883306466B7007B50CD /* Alisveris-fisTaramaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5046488A306466B7007B50CD /* Build configuration list for PBXNativeTarget "Alisveris-fisTaramaTests" */;
+			buildPhases = (
+				50464880306466B7007B50CD /* Sources */,
+				50464881306466B7007B50CD /* Frameworks */,
+				50464882306466B7007B50CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50464889306466B7007B50CD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				50464885306466B7007B50CD /* Alisveris-fisTaramaTests */,
+			);
+			name = "Alisveris-fisTaramaTests";
+			productName = "Alisveris-fisTaramaTests";
+			productReference = 50464884306466B7007B50CD /* Alisveris-fisTaramaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		50BE9BD4306187FC008FA250 /* Alisveris-fisTarama */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50BE9BE2306187FC008FA250 /* Build configuration list for PBXNativeTarget "Alisveris-fisTarama" */;
@@ -74,6 +118,10 @@
 				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
+					50464883306466B7007B50CD = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 50BE9BD4306187FC008FA250;
+					};
 					50BE9BD4306187FC008FA250 = {
 						CreatedOnToolsVersion = 27.0;
 					};
@@ -94,11 +142,17 @@
 			projectRoot = "";
 			targets = (
 				50BE9BD4306187FC008FA250 /* Alisveris-fisTarama */,
+				50464883306466B7007B50CD /* Alisveris-fisTaramaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		50464882306466B7007B50CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
 		50BE9BD3306187FC008FA250 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
@@ -107,6 +161,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		50464880306466B7007B50CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 		50BE9BD1306187FC008FA250 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
@@ -114,7 +173,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		50464889306466B7007B50CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50BE9BD4306187FC008FA250 /* Alisveris-fisTarama */;
+			targetProxy = 50464888306466B7007B50CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5046488B306466B7007B50CD /* Debug configuration for PBXNativeTarget "Alisveris-fisTaramaTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Korkut.Alisveris-fisTarama.Alisveris-fisTaramaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alisveris-fisTarama.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Alisveris-fisTarama";
+			};
+			name = Debug;
+		};
+		5046488C306466B7007B50CD /* Release configuration for PBXNativeTarget "Alisveris-fisTaramaTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Korkut.Alisveris-fisTarama.Alisveris-fisTaramaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alisveris-fisTarama.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Alisveris-fisTarama";
+			};
+			name = Release;
+		};
 		50BE9BE0306187FC008FA250 /* Debug configuration for PBXProject "Alisveris-fisTarama" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -303,6 +410,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5046488A306466B7007B50CD /* Build configuration list for PBXNativeTarget "Alisveris-fisTaramaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5046488B306466B7007B50CD /* Debug configuration for PBXNativeTarget "Alisveris-fisTaramaTests" */,
+				5046488C306466B7007B50CD /* Release configuration for PBXNativeTarget "Alisveris-fisTaramaTests" */,
+			);
+			defaultConfigurationName = Release;
+		};
 		50BE9BD0306187FC008FA250 /* Build configuration list for PBXProject "Alisveris-fisTarama" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
