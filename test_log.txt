@@ -1,0 +1,516 @@
+Test Alisveris-fisTarama
+  ◇ Test testParseWeightedItemSubline() started.
+  ◇ Test testLaspeyresInflationIndexCalculation() started.
+  ◇ Test testParseSimpleReceiptSuccess() started.
+  ◇ Test testParseRealLifeFileReceipt() started.
+  ◇ Test testLaspeyresUnreliableWhenCoverageLow() started.
+  ◇ Test testParseRealLifeFileReceiptWithWeightedSucuk() started.
+  ◇ Test testUnitConverterStandardUnitsKeepRawPrice() started.
+  ◇ Test testProductPackagingParserSingleUnits() started.
+  ◇ Test testUnitTypeDimensionsAndFactors() started.
+  ◇ Test testProductPackagingParserMultiPack() started.
+  ◇ Test testStoreHHICalculations() started.
+  ◇ Test testCurrencyFormatterAndNormalizer() started.
+  ◇ Test testCascadeAndNullifyDeleteRules() started.
+  ◇ Test testStoreDeduplication() started.
+  ◇ Test testSaveLoadAndDeleteDraft() started.
+  ◇ Test testModelPersistenceAndRelationships() started.
+  ◇ Test testPersistReceiptAndPriceHistory() started.
+  ◇ Test testUnitConverterVolumeMlToLiter() started.
+  ◇ Test testOCRWordBoxGeometryCalculations() started.
+  ◇ Test testSegmentedReceiptLineSortingAndBoundingBox() started.
+  ◇ Test testLineSegmenterWithEmptyObservations() started.
+  ◇ Test testUnitConverterWeightGramToKg() started.
+  ◇ Test testDevLoggerSessionLifecycle() started.
+  ◇ Test testSaveLoadAndDeleteReceiptImage() started.
+  ◇ Test testReviewCorrectionViewModelCalculations() started.
+  ◇ Test testDTOInitializationAndSendable() started.
+  ◇ Test testLoadNonExistentImageReturnsNil() started.
+  ◇ Test testRetailVocabularyContents() started.
+  ◇ Test testRegexLibraryDateAndTotalMatches() started.
+  ◇ Test testTurkeyRetailProfileStorePatterns() started.
+  ◇ Test testTurkishProductNameCleanerAbbreviations() started.
+  ✔ Test testLaspeyresInflationIndexCalculation() passed after 0.006 seconds.
+  ✔ Test testStoreHHICalculations() passed after 0.006 seconds.
+  ✔ Test testLaspeyresUnreliableWhenCoverageLow() passed after 0.006 seconds.
+  ✔ Test testUnitTypeDimensionsAndFactors() passed after 0.006 seconds.
+  ✔ Test testUnitConverterStandardUnitsKeepRawPrice() passed after 0.006 seconds.
+  ✔ Test testUnitConverterVolumeMlToLiter() passed after 0.006 seconds.
+  ✔ Test testOCRWordBoxGeometryCalculations() passed after 0.006 seconds.
+  ✔ Test testUnitConverterWeightGramToKg() passed after 0.004 seconds.
+  ✔ Test testSegmentedReceiptLineSortingAndBoundingBox() passed after 0.006 seconds.
+  ✔ Test testLineSegmenterWithEmptyObservations() passed after 0.004 seconds.
+  ✔ Test testProductPackagingParserMultiPack() passed after 0.006 seconds.
+  ✔ Test testProductPackagingParserSingleUnits() passed after 0.006 seconds.
+  ✔ Test testRetailVocabularyContents() passed after 0.005 seconds.
+  ✔ Test testDTOInitializationAndSendable() passed after 0.006 seconds.
+  ✔ Test testRegexLibraryDateAndTotalMatches() passed after 0.001 seconds.
+  ✔ Test testTurkeyRetailProfileStorePatterns() passed after 0.001 seconds.
+  ✔ Test testLoadNonExistentImageReturnsNil() passed after 0.005 seconds.
+  ✔ Test testTurkishProductNameCleanerAbbreviations() passed after 0.001 seconds.
+  ✔ Suite ReceiptLineSegmenterTests passed after 0.008 seconds.
+  ✔ Test testParseWeightedItemSubline() passed after 0.007 seconds.
+  ✔ Suite UnitConverterTests passed after 0.007 seconds.
+  ✔ Suite MarketProfileRegexTests passed after 0.007 seconds.
+  ✔ Test testParseSimpleReceiptSuccess() passed after 0.012 seconds.
+  ✔ Test testDevLoggerSessionLifecycle() passed after 0.011 seconds.
+  ✔ Suite ReceiptDevLoggerTests passed after 0.013 seconds.
+  ✘ Test testParseRealLifeFileReceipt() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:182:9: Expectation failed: parsed.confidenceScore >= 0.85
+  ↳ // Güven skoru: Aritmetik (67 + 1 + 289 = 357) tam tuttuğu için mükemmel olmalı!
+  ↳ parsed.confidenceScore >= 0.85 → false
+  ↳   parsed.confidenceScore → 0.4325000047683716
+
+  Launch actions
+    Launch Alisveris-fisTaramaTests
+      notice:Platform: iOS Simulator
+      notice:Device Identifier: 700C31D8-1E9F-4136-AF17-0DADDD833FC0
+      notice:Operating System Version: 27.0 (24A434)
+      notice:Model: iPhone 18 Pro (iPhone19,2)
+      notice:Target Architecture: arm64
+    
+      Installing built products
+        notice:Installing on iPhone 18 Pro
+        notice:Successfully installed
+      
+      Launching Alisveris-fisTaramaTests
+        notice:Launching Korkut.Alisveris-fisTarama
+        notice:Launching from /Users/korkuteryigit/Library/Developer/Xcode/DerivedData/Alisveris-fisTarama-eqinrqkbwyqleeeidkheibelqzcl/Build/Products/Debug-iphonesimulator/Alisveris-fisTarama.app
+        notice:Launching suspended and the launcher is responsible for resuming.
+        notice:Successfully launched Alisveris-fisTaramaTests
+        notice:Process with pid 79480 launched
+        notice:Console logging policy: Synchronously obtain os_logs via libLogRedirect, and read stdio from File Descriptors
+        notice:Resumed target process.
+      
+    Launch Alisveris-fisTaramaTests
+      notice:Platform: iOS Simulator
+      notice:Device Identifier: 700C31D8-1E9F-4136-AF17-0DADDD833FC0
+      notice:Operating System Version: 27.0 (24A434)
+      notice:Model: iPhone 18 Pro (iPhone19,2)
+      notice:Target Architecture: arm64
+    
+      Installing built products
+        notice:Installing on iPhone 18 Pro
+        notice:Successfully installed
+      
+      Launching Alisveris-fisTaramaTests
+        notice:Launching Korkut.Alisveris-fisTarama
+        notice:Launching from /Users/korkuteryigit/Library/Developer/Xcode/DerivedData/Alisveris-fisTarama-eqinrqkbwyqleeeidkheibelqzcl/Build/Products/Debug-iphonesimulator/Alisveris-fisTarama.app
+        notice:Launching suspended and the launcher is responsible for resuming.
+        notice:Successfully launched Alisveris-fisTaramaTests
+        notice:Process with pid 79503 launched
+        notice:Console logging policy: Synchronously obtain os_logs via libLogRedirect, and read stdio from File Descriptors
+        notice:Resumed target process.
+      
+  Test target Alisveris-fisTaramaTests
+    Alisveris-fisTarama (79503)
+      [ConsoleFoundation] Initialization successful2026-09-24 17:45:54.125835+0300 [79480:7036171] [XPC] [C:1] Ignoring activation message because no connection exists for 1
+      2026-09-24 17:45:56.113802+0300 [79480:7036018] [XPCErrors] non-launching port is incompatible with service identifier "com.apple.PointerUI.pointeruid.default-service"
+      2026-09-24 17:45:56.118233+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+      2026-09-24 17:45:56.120018+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+      2026-09-24 17:45:56.120606+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+      2026-09-24 17:45:56.120645+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+      ◇ Test run started.
+      ↳ Testing Library Version: 2084
+      ↳ Target Platform: arm64-apple-ios17.0-simulator
+      ◇ Suite ReceiptImagePreprocessorTests started.
+      ◇ Suite ReceiptParserEngineBenchmarkTests started.
+      ◇ Suite AnalyticsAndInsightEngineTests started.
+      ◇ Suite ReceiptDraftStoreTests started.
+      ◇ Suite UnitConverterTests started.
+      ◇ Suite ReceiptLineSegmenterTests started.
+      ◇ Suite ReceiptDataModelTests started.
+      ◇ Suite ReceiptImageDiskManagerTests started.
+      ◇ Suite ReceiptPersistenceActorTests started.
+      ◇ Test testPreprocessImageSuccess() started.
+      ◇ Suite ReceiptDevLoggerTests started.
+      ◇ Suite MarketProfileRegexTests started.
+      ◇ Test testPreprocessEmptyImageThrowsError() started.
+      ◇ Test testDeterministicInsightEnginePriceSurgeRule() started.
+      ◇ Test testParseWeightedItemSubline() started.
+      ◇ Test testLaspeyresInflationIndexCalculation() started.
+      ◇ Test testParseSimpleReceiptSuccess() started.
+      ◇ Test testParseRealLifeFileReceipt() started.
+      ◇ Test testLaspeyresUnreliableWhenCoverageLow() started.
+      ◇ Test testParseRealLifeFileReceiptWithWeightedSucuk() started.
+      ◇ Test testUnitConverterStandardUnitsKeepRawPrice() started.
+      ◇ Test testProductPackagingParserSingleUnits() started.
+      ◇ Test testUnitTypeDimensionsAndFactors() started.
+      ◇ Test testProductPackagingParserMultiPack() started.
+      ◇ Test testStoreHHICalculations() started.
+      ◇ Test testCurrencyFormatterAndNormalizer() started.
+      ◇ Test testCascadeAndNullifyDeleteRules() started.
+      ◇ Test testStoreDeduplication() started.
+      ◇ Test testSaveLoadAndDeleteDraft() started.
+      ◇ Test testModelPersistenceAndRelationships() started.
+      ◇ Test testPersistReceiptAndPriceHistory() started.
+      ◇ Test testUnitConverterVolumeMlToLiter() started.
+      ◇ Test testOCRWordBoxGeometryCalculations() started.
+      ◇ Test testSegmentedReceiptLineSortingAndBoundingBox() started.
+      ◇ Test testLineSegmenterWithEmptyObservations() started.
+      ◇ Test testUnitConverterWeightGramToKg() started.
+      ◇ Test testDevLoggerSessionLifecycle() started.
+      ◇ Test testSaveLoadAndDeleteReceiptImage() started.
+      ◇ Test testReviewCorrectionViewModelCalculations() started.
+      ◇ Test testDTOInitializationAndSendable() started.
+      ◇ Test testLoadNonExistentImageReturnsNil() started.
+      ◇ Test testRetailVocabularyContents() started.
+      ◇ Test testRegexLibraryDateAndTotalMatches() started.
+      ◇ Test testTurkeyRetailProfileStorePatterns() started.
+      ◇ Test testTurkishProductNameCleanerAbbreviations() started.
+      ✔ Test testLaspeyresInflationIndexCalculation() passed after 0.006 seconds.
+      ✔ Test testStoreHHICalculations() passed after 0.006 seconds.
+      ✔ Test testLaspeyresUnreliableWhenCoverageLow() passed after 0.006 seconds.
+      ✔ Test testUnitTypeDimensionsAndFactors() passed after 0.006 seconds.
+      ✔ Test testUnitConverterStandardUnitsKeepRawPrice() passed after 0.006 seconds.
+      ✔ Test testUnitConverterVolumeMlToLiter() passed after 0.006 seconds.
+      ✔ Test testOCRWordBoxGeometryCalculations() passed after 0.006 seconds.
+      ✔ Test testUnitConverterWeightGramToKg() passed after 0.004 seconds.
+      ✔ Test testSegmentedReceiptLineSortingAndBoundingBox() passed after 0.006 seconds.
+      ✔ Test testLineSegmenterWithEmptyObservations() passed after 0.004 seconds.
+      ✔ Test testProductPackagingParserMultiPack() passed after 0.006 seconds.
+      ✔ Test testProductPackagingParserSingleUnits() passed after 0.006 seconds.
+      ✔ Test testRetailVocabularyContents() passed after 0.005 seconds.
+      ✔ Test testDTOInitializationAndSendable() passed after 0.006 seconds.
+      ✔ Test testRegexLibraryDateAndTotalMatches() passed after 0.001 seconds.
+      ✔ Test testTurkeyRetailProfileStorePatterns() passed after 0.001 seconds.
+      ✔ Test testLoadNonExistentImageReturnsNil() passed after 0.005 seconds.
+      ✔ Test testTurkishProductNameCleanerAbbreviations() passed after 0.001 seconds.
+      ✔ Suite ReceiptLineSegmenterTests passed after 0.008 seconds.
+      ✔ Test testParseWeightedItemSubline() passed after 0.007 seconds.
+      ✔ Suite UnitConverterTests passed after 0.007 seconds.
+      ✔ Suite MarketProfileRegexTests passed after 0.007 seconds.
+      ✔ Test testParseSimpleReceiptSuccess() passed after 0.012 seconds.
+      ✔ Test testDevLoggerSessionLifecycle() passed after 0.011 seconds.
+      ✔ Suite ReceiptDevLoggerTests passed after 0.013 seconds.
+      ✘ Test testParseRealLifeFileReceiptWithWeightedSucuk() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:236:9: Expectation failed: parsed.items.count == 1
+      ↳ // Kalem Sayısı: Sadece 1 tartılı ürün (Harras Acılı Sucuk)
+      ↳ parsed.items.count == 1 → false
+      ↳   parsed.items.count → 0
+      ✘ Test testParseRealLifeFileReceipt() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:182:9: Expectation failed: parsed.confidenceScore >= 0.85
+      ↳ // Güven skoru: Aritmetik (67 + 1 + 289 = 357) tam tuttuğu için mükemmel olmalı!
+      ↳ parsed.confidenceScore >= 0.85 → false
+      ↳   parsed.confidenceScore → 0.4325000047683716
+      Swift/ContiguousArrayBuffer.swift:695: Fatal error: Index out of range
+      ✘ Test testParseRealLifeFileReceipt() failed after 0.035 seconds with 1 issue.
+    
+      Writing diagnostic log for test runner launch.
+        /Users/korkuteryigit/Library/Developer/Xcode/DerivedData/Alisveris-fisTarama-eqinrqkbwyqleeeidkheibelqzcl/Logs/Test/Test-Alisveris-fisTarama-2026.09.24_17-45-42-+0300.xcresult/Staging/1_Test/Diagnostics/Alisveris-fisTaramaTests-57FE1B14-D5AD-44EA-8A03-D0B1F9F29C48-Configuration-Test Scheme Action-Iteration-1/Alisveris-fisTaramaTests-39D8A52C-F0E6-4714-AE52-3521A0D39789/Session-Alisveris-fisTaramaTests-2026-09-24_174548-3FCQDh.log:notice:/Users/korkuteryigit/Library/Developer/Xcode/DerivedData/Alisveris-fisTarama-eqinrqkbwyqleeeidkheibelqzcl/Logs/Test/Test-Alisveris-fisTarama-2026.09.24_17-45-42-+0300.xcresult/Staging/1_Test/Diagnostics/Alisveris-fisTaramaTests-57FE1B14-D5AD-44EA-8A03-D0B1F9F29C48-Configuration-Test Scheme Action-Iteration-1/Alisveris-fisTaramaTests-39D8A52C-F0E6-4714-AE52-3521A0D39789/Session-Alisveris-fisTaramaTests-2026-09-24_174548-3FCQDh.log
+      
+      Run test suite ReceiptLineSegmenterTests
+        Summary: ✘ Test testParseRealLifeFileReceiptWithWeightedSucuk() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:236:9: Expectation failed: parsed.items.count == 1
+↳ // Kalem Sayısı: Sadece 1 tartılı ürün (Harras Acılı Sucuk)
+↳ parsed.items.count == 1 → false
+↳   parsed.items.count → 0
+
+        [ConsoleFoundation] Initialization successful2026-09-24 17:45:54.125835+0300 [79480:7036171] [XPC] [C:1] Ignoring activation message because no connection exists for 1
+        2026-09-24 17:45:56.113802+0300 [79480:7036018] [XPCErrors] non-launching port is incompatible with service identifier "com.apple.PointerUI.pointeruid.default-service"
+        2026-09-24 17:45:56.118233+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+        2026-09-24 17:45:56.120018+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+        2026-09-24 17:45:56.120606+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+        2026-09-24 17:45:56.120645+0300 [79480:7036018] [API] cannot add handler to 0 from 0 - dropping
+        ◇ Test run started.
+        ↳ Testing Library Version: 2084
+        ↳ Target Platform: arm64-apple-ios17.0-simulator
+        ◇ Suite ReceiptImagePreprocessorTests started.
+        ◇ Suite ReceiptParserEngineBenchmarkTests started.
+        ◇ Test testRegexLibraryDateAndTotalMatches() started.
+        ◇ Test testTurkishProductNameCleanerAbbreviations() started.
+        ✔ Test testStoreHHICalculations() passed after 0.006 seconds.
+        ✔ Test testLaspeyresUnreliableWhenCoverageLow() passed after 0.006 seconds.
+        ✔ Test testOCRWordBoxGeometryCalculations() passed after 0.006 seconds.
+        ✔ Test testSegmentedReceiptLineSortingAndBoundingBox() passed after 0.006 seconds.
+        ✔ Test testTurkeyRetailProfileStorePatterns() passed after 0.001 seconds.
+        ✔ Test testLoadNonExistentImageReturnsNil() passed after 0.005 seconds.
+        ✘ Test testParseRealLifeFileReceiptWithWeightedSucuk() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:236:9: Expectation failed: parsed.items.count == 1
+        ↳ // Kalem Sayısı: Sadece 1 tartılı ürün (Harras Acılı Sucuk)
+        ↳ parsed.items.count == 1 → false
+        ↳   parsed.items.count → 0
+      
+        Run test case testOCRWordBoxGeometryCalculations()
+          Summary: ✔ Test testStoreHHICalculations() passed after 0.006 seconds.
+
+          ◇ Test testRegexLibraryDateAndTotalMatches() started.
+          ✔ Test testStoreHHICalculations() passed after 0.006 seconds.
+        
+        Run test case testSegmentedReceiptLineSortingAndBoundingBox()
+          Summary: ✔ Test testOCRWordBoxGeometryCalculations() passed after 0.006 seconds.
+
+          ◇ Test testTurkishProductNameCleanerAbbreviations() started.
+          ✔ Test testOCRWordBoxGeometryCalculations() passed after 0.006 seconds.
+        
+        Run test case testLineSegmenterWithEmptyObservations()
+          Summary: ✔ Test testSegmentedReceiptLineSortingAndBoundingBox() passed after 0.006 seconds.
+
+          ✔ Test testLaspeyresUnreliableWhenCoverageLow() passed after 0.006 seconds.
+          ✔ Test testSegmentedReceiptLineSortingAndBoundingBox() passed after 0.006 seconds.
+        
+        Run test case testRetailVocabularyContents()
+          Summary: ✔ Test testLoadNonExistentImageReturnsNil() passed after 0.005 seconds.
+
+          ✔ Test testTurkeyRetailProfileStorePatterns() passed after 0.001 seconds.
+          ✔ Test testLoadNonExistentImageReturnsNil() passed after 0.005 seconds.
+        
+      Run test suite ReceiptDataModelTests
+        ◇ Suite AnalyticsAndInsightEngineTests started.
+        ◇ Test testUnitConverterWeightGramToKg() started.
+        ◇ Test testDevLoggerSessionLifecycle() started.
+        ◇ Test testSaveLoadAndDeleteReceiptImage() started.
+      
+        Run test case testCurrencyFormatterAndNormalizer()
+          ◇ Test testUnitConverterWeightGramToKg() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testCascadeAndNullifyDeleteRules()
+          ◇ Test testDevLoggerSessionLifecycle() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testModelPersistenceAndRelationships()
+          ◇ Test testSaveLoadAndDeleteReceiptImage() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+      Run test suite ReceiptParserEngineBenchmarkTests
+        ◇ Suite ReceiptDraftStoreTests started.
+        ◇ Suite UnitConverterTests started.
+        ◇ Test testLaspeyresUnreliableWhenCoverageLow() started.
+        ◇ Test testUnitConverterStandardUnitsKeepRawPrice() started.
+        ◇ Test testProductPackagingParserMultiPack() started.
+        ◇ Test testCurrencyFormatterAndNormalizer() started.
+        ◇ Test testCascadeAndNullifyDeleteRules() started.
+        ✘ Test testParseRealLifeFileReceipt() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:182:9: Expectation failed: parsed.confidenceScore >= 0.85
+        ↳ // Güven skoru: Aritmetik (67 + 1 + 289 = 357) tam tuttuğu için mükemmel olmalı!
+        ↳ parsed.confidenceScore >= 0.85 → false
+        ↳   parsed.confidenceScore → 0.4325000047683716
+      
+        Run test case testParseSimpleReceiptSuccess()
+          ◇ Test testLaspeyresUnreliableWhenCoverageLow() started.
+        
+        Run test case testParseRealLifeFileReceiptWithWeightedSucuk()
+          ◇ Test testUnitConverterStandardUnitsKeepRawPrice() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testParseRealLifeFileReceipt()
+          ◇ Test testProductPackagingParserMultiPack() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testParseWeightedItemSubline()
+          Summary: ✘ Test testParseRealLifeFileReceipt() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:182:9: Expectation failed: parsed.confidenceScore >= 0.85
+↳ // Güven skoru: Aritmetik (67 + 1 + 289 = 357) tam tuttuğu için mükemmel olmalı!
+↳ parsed.confidenceScore >= 0.85 → false
+↳   parsed.confidenceScore → 0.4325000047683716
+
+          ◇ Test testCurrencyFormatterAndNormalizer() started.
+          ◇ Test testCascadeAndNullifyDeleteRules() started.
+          ✘ Test testParseRealLifeFileReceipt() recorded an issue at ReceiptParserEngineBenchmarkTests.swift:182:9: Expectation failed: parsed.confidenceScore >= 0.85
+          ↳ // Güven skoru: Aritmetik (67 + 1 + 289 = 357) tam tuttuğu için mükemmel olmalı!
+          ↳ parsed.confidenceScore >= 0.85 → false
+          ↳   parsed.confidenceScore → 0.4325000047683716
+        
+      Run test suite ReceiptDraftStoreTests
+        ◇ Suite ReceiptLineSegmenterTests started.
+        ✔ Test testLineSegmenterWithEmptyObservations() passed after 0.004 seconds.
+        ✔ Test testRetailVocabularyContents() passed after 0.005 seconds.
+      
+        Run test case testReviewCorrectionViewModelCalculations()
+          ✔ Test testLineSegmenterWithEmptyObservations() passed after 0.004 seconds.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testSaveLoadAndDeleteDraft()
+          ✔ Test testRetailVocabularyContents() passed after 0.005 seconds.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+      Run test suite UnitConverterTests
+        Summary: Swift/ContiguousArrayBuffer.swift:695: Fatal error: Index out of range
+✘ Test testParseRealLifeFileReceipt() failed after 0.035 seconds with 1 issue.
+
+        ◇ Suite ReceiptDataModelTests started.
+        ◇ Suite ReceiptImageDiskManagerTests started.
+        ◇ Test testUnitTypeDimensionsAndFactors() started.
+        ◇ Test testStoreHHICalculations() started.
+        ◇ Test testStoreDeduplication() started.
+        ◇ Test testSaveLoadAndDeleteDraft() started.
+        ◇ Test testUnitConverterVolumeMlToLiter() started.
+        ◇ Test testLoadNonExistentImageReturnsNil() started.
+        ◇ Test testRetailVocabularyContents() started.
+        ◇ Test testTurkeyRetailProfileStorePatterns() started.
+        ✔ Test testLaspeyresInflationIndexCalculation() passed after 0.006 seconds.
+        ✔ Test testUnitTypeDimensionsAndFactors() passed after 0.006 seconds.
+        ✔ Test testUnitConverterStandardUnitsKeepRawPrice() passed after 0.006 seconds.
+        ✔ Test testProductPackagingParserMultiPack() passed after 0.006 seconds.
+        ✔ Test testProductPackagingParserSingleUnits() passed after 0.006 seconds.
+        ✔ Test testDTOInitializationAndSendable() passed after 0.006 seconds.
+        ✔ Test testTurkishProductNameCleanerAbbreviations() passed after 0.001 seconds.
+        Swift/ContiguousArrayBuffer.swift:695: Fatal error: Index out of range
+        ✘ Test testParseRealLifeFileReceipt() failed after 0.035 seconds with 1 issue.
+      
+        Run test case testProductPackagingParserSingleUnits()
+          Summary: ✔ Test testDTOInitializationAndSendable() passed after 0.006 seconds.
+
+          ◇ Test testUnitTypeDimensionsAndFactors() started.
+          ✔ Test testDTOInitializationAndSendable() passed after 0.006 seconds.
+        
+        Run test case testUnitConverterStandardUnitsKeepRawPrice()
+          Summary: ◇ Test testUnitConverterVolumeMlToLiter() started.
+
+          ◇ Test testStoreHHICalculations() started.
+          ◇ Test testUnitConverterVolumeMlToLiter() started.
+        
+        Run test case testProductPackagingParserMultiPack()
+          Summary: ✔ Test testProductPackagingParserSingleUnits() passed after 0.006 seconds.
+
+          ◇ Test testStoreDeduplication() started.
+          ◇ Test testSaveLoadAndDeleteDraft() started.
+          ✔ Test testProductPackagingParserSingleUnits() passed after 0.006 seconds.
+        
+        Run test case testUnitTypeDimensionsAndFactors()
+          Summary: ◇ Test testRetailVocabularyContents() started.
+
+          ◇ Test testLoadNonExistentImageReturnsNil() started.
+          ◇ Test testRetailVocabularyContents() started.
+        
+        Run test case testUnitConverterVolumeMlToLiter()
+          Summary: ✔ Test testLaspeyresInflationIndexCalculation() passed after 0.006 seconds.
+
+          ◇ Test testTurkeyRetailProfileStorePatterns() started.
+          ✔ Test testLaspeyresInflationIndexCalculation() passed after 0.006 seconds.
+        
+        Run test case testUnitConverterWeightGramToKg()
+          Summary: ✔ Test testUnitConverterStandardUnitsKeepRawPrice() passed after 0.006 seconds.
+
+          ✔ Test testUnitTypeDimensionsAndFactors() passed after 0.006 seconds.
+          ✔ Test testUnitConverterStandardUnitsKeepRawPrice() passed after 0.006 seconds.
+        
+        Run test case testDTOInitializationAndSendable()
+          Summary: ✔ Test testTurkishProductNameCleanerAbbreviations() passed after 0.001 seconds.
+
+          ✔ Test testProductPackagingParserMultiPack() passed after 0.006 seconds.
+          ✔ Test testTurkishProductNameCleanerAbbreviations() passed after 0.001 seconds.
+        
+      Run test suite ReceiptImagePreprocessorTests
+        ◇ Suite ReceiptPersistenceActorTests started.
+        ◇ Test testParseWeightedItemSubline() started.
+        ◇ Test testParseSimpleReceiptSuccess() started.
+        ◇ Test testParseRealLifeFileReceipt() started.
+      
+        Run test case testPreprocessEmptyImageThrowsError()
+          ◇ Test testParseWeightedItemSubline() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testPreprocessImageSuccess()
+          ◇ Test testParseSimpleReceiptSuccess() started.
+          ◇ Test testParseRealLifeFileReceipt() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+      Run test suite ReceiptDevLoggerTests
+        ◇ Test testPreprocessImageSuccess() started.
+        ✔ Test testUnitConverterVolumeMlToLiter() passed after 0.006 seconds.
+      
+        Run test case testDevLoggerSessionLifecycle()
+          ✔ Test testUnitConverterVolumeMlToLiter() passed after 0.006 seconds.
+        
+      Run test suite AnalyticsAndInsightEngineTests
+        ◇ Suite ReceiptDevLoggerTests started.
+        ◇ Test testLaspeyresInflationIndexCalculation() started.
+        ◇ Test testParseRealLifeFileReceiptWithWeightedSucuk() started.
+        ◇ Test testProductPackagingParserSingleUnits() started.
+        ◇ Test testModelPersistenceAndRelationships() started.
+        ◇ Test testPersistReceiptAndPriceHistory() started.
+        ◇ Test testOCRWordBoxGeometryCalculations() started.
+        ◇ Test testSegmentedReceiptLineSortingAndBoundingBox() started.
+        ◇ Test testLineSegmenterWithEmptyObservations() started.
+      
+        Run test case testDeterministicInsightEnginePriceSurgeRule()
+          ◇ Test testLaspeyresInflationIndexCalculation() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testLaspeyresUnreliableWhenCoverageLow()
+          Summary: ◇ Test testPersistReceiptAndPriceHistory() started.
+
+          ◇ Test testParseRealLifeFileReceiptWithWeightedSucuk() started.
+          ◇ Test testPersistReceiptAndPriceHistory() started.
+        
+        Run test case testLaspeyresInflationIndexCalculation()
+          Summary: ◇ Test testModelPersistenceAndRelationships() started.
+
+          ◇ Test testProductPackagingParserSingleUnits() started.
+          ◇ Test testModelPersistenceAndRelationships() started.
+        
+        Run test case testStoreHHICalculations()
+          Summary: ◇ Test testLineSegmenterWithEmptyObservations() started.
+
+          ◇ Test testOCRWordBoxGeometryCalculations() started.
+          ◇ Test testSegmentedReceiptLineSortingAndBoundingBox() started.
+          ◇ Test testLineSegmenterWithEmptyObservations() started.
+        
+      Run test suite ReceiptImageDiskManagerTests
+        ◇ Suite MarketProfileRegexTests started.
+        ✔ Test testUnitConverterWeightGramToKg() passed after 0.004 seconds.
+        ✔ Test testRegexLibraryDateAndTotalMatches() passed after 0.001 seconds.
+        ✔ Test testDevLoggerSessionLifecycle() passed after 0.011 seconds.
+      
+        Run test case testSaveLoadAndDeleteReceiptImage()
+          ✔ Test testUnitConverterWeightGramToKg() passed after 0.004 seconds.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testLoadNonExistentImageReturnsNil()
+          Summary: ✔ Test testDevLoggerSessionLifecycle() passed after 0.011 seconds.
+
+          ✔ Test testRegexLibraryDateAndTotalMatches() passed after 0.001 seconds.
+          ✔ Test testDevLoggerSessionLifecycle() passed after 0.011 seconds.
+        
+      Run test suite ReceiptPersistenceActorTests
+        ◇ Test testPreprocessEmptyImageThrowsError() started.
+        ◇ Test testReviewCorrectionViewModelCalculations() started.
+        ◇ Test testDTOInitializationAndSendable() started.
+      
+        Run test case testStoreDeduplication()
+          ◇ Test testReviewCorrectionViewModelCalculations() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+        Run test case testPersistReceiptAndPriceHistory()
+          ◇ Test testDTOInitializationAndSendable() started.
+          :test failure:Crash: Alisveris-fisTarama at specialized static Runner._applyScopingTraits(for:testCase:_:)
+        
+      Run test suite MarketProfileRegexTests
+        ◇ Test testDeterministicInsightEnginePriceSurgeRule() started.
+        ✔ Suite ReceiptLineSegmenterTests passed after 0.008 seconds.
+        ✔ Test testParseWeightedItemSubline() passed after 0.007 seconds.
+        ✔ Suite UnitConverterTests passed after 0.007 seconds.
+        ✔ Suite MarketProfileRegexTests passed after 0.007 seconds.
+        ✔ Test testParseSimpleReceiptSuccess() passed after 0.012 seconds.
+        ✔ Suite ReceiptDevLoggerTests passed after 0.013 seconds.
+      
+        Run test case testRegexLibraryDateAndTotalMatches()
+          Summary: ✔ Suite UnitConverterTests passed after 0.007 seconds.
+
+          ✔ Suite ReceiptLineSegmenterTests passed after 0.008 seconds.
+          ✔ Suite UnitConverterTests passed after 0.007 seconds.
+        
+        Run test case testTurkeyRetailProfileStorePatterns()
+          Summary: ✔ Suite MarketProfileRegexTests passed after 0.007 seconds.
+
+          ✔ Test testParseWeightedItemSubline() passed after 0.007 seconds.
+          ✔ Suite MarketProfileRegexTests passed after 0.007 seconds.
+        
+        Run test case testTurkishProductNameCleanerAbbreviations()
+          Summary: ✔ Suite ReceiptDevLoggerTests passed after 0.013 seconds.
+
+          ✔ Test testParseSimpleReceiptSuccess() passed after 0.012 seconds.
+          ✔ Suite ReceiptDevLoggerTests passed after 0.013 seconds.
+        
+  Generating coverage report
+    Downloading profiles from Clone 1 of iPhone 18 Pro
+      notice:Downloading profiles for Korkut.Alisveris-fisTarama from 2 directories
+    
+    Merging 2 profiles using llvm-profdata (2100.3.34.2.0)
+    
+    Pre-processing target built products
+    
+    Processing source file data
+      notice:Archived line-level coverage for 57 file(s):
+      notice:Skipped 3 file(s) with no executable lines:
+    
+    Generating target entries
+      notice:Generating entry for target Alisveris-fisTarama.app
+      notice:Generating entry for target Alisveris-fisTaramaTests.xctest
+    
+** TEST FINISHED **

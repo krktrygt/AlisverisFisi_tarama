@@ -46,6 +46,16 @@ public extension Decimal {
 }
 
 public enum TurkishCurrencyNormalizer: Sendable {
+    public static func format(_ value: Decimal) -> String {
+        value.formattedAsCurrency()
+    }
+
+    public static func parseQuantity(from rawText: String) -> Decimal? {
+        let cleaned = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: ",", with: ".")
+        return Decimal(string: cleaned, locale: Locale(identifier: "en_US"))
+    }
+
     public static func parseDecimal(from rawText: String) -> Decimal? {
         var cleaned = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "TL", with: "", options: .caseInsensitive)

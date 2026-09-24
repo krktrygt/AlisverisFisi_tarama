@@ -12,6 +12,8 @@ import SwiftUI
 
 @MainActor
 public final class AppContainer: ObservableObject {
+    public static let shared = AppContainer()
+
     public let modelContainer: ModelContainer
     public let persistenceActor: ReceiptPersistenceActor
     public let imageDiskManager: any ReceiptImageDiskManagerProtocol
