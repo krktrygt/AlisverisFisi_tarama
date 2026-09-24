@@ -25,6 +25,7 @@ public struct ParsedReceiptDTO: Sendable, Identifiable, Codable {
     public var rawOcrText: String
     public var confidenceScore: Double
     public var imageRelativePath: String?
+    public var auditLog: [String]
 
     public init(
         id: UUID = UUID(),
@@ -42,7 +43,8 @@ public struct ParsedReceiptDTO: Sendable, Identifiable, Codable {
         items: [ParsedItemDTO],
         rawOcrText: String = "",
         confidenceScore: Double = 1.0,
-        imageRelativePath: String? = nil
+        imageRelativePath: String? = nil,
+        auditLog: [String] = []
     ) {
         self.id = id
         self.storeName = storeName
@@ -60,5 +62,6 @@ public struct ParsedReceiptDTO: Sendable, Identifiable, Codable {
         self.rawOcrText = rawOcrText
         self.confidenceScore = confidenceScore
         self.imageRelativePath = imageRelativePath
+        self.auditLog = auditLog
     }
 }

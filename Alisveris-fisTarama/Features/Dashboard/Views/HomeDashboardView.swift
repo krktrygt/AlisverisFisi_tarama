@@ -330,15 +330,15 @@ public struct HomeDashboardView: View {
                     details: segmentedSummary
                 )
 
-                let engine = TurkishReceiptParserEngine()
-                let parsedDTO = engine.parse(segmentedLines: segmentedLines, imageSize: imageSize)
+                let engine = TurkishReceiptParserEngine(mlService: ReceiptMLInferenceService.shared)
+                let parsedDTO = await engine.parse(segmentedLines: segmentedLines, imageSize: imageSize)
 
-                let itemSummary = parsedDTO.items.map { "- \($0.rawName) -> \($0.normalizedName): \($0.totalPrice) TL" }.joined(separator: "\n")
+                let auditReport = parsedDTO.auditLog.joined(separator: "\n")
                 await ReceiptDevLogger.shared.logStage(
                     sessionId: sessionId,
                     stageName: "4. Parser Engine Kararları",
-                    summary: "Market: \(parsedDTO.storeName ?? "Bulunamadı") | Toplam: \(parsedDTO.totalAmount) TL | Kalem: \(parsedDTO.items.count)",
-                    details: itemSummary
+                    summary: "Market: \(parsedDTO.storeName) | Toplam: \(parsedDTO.totalAmount) TL | Kalem: \(parsedDTO.items.count) | Güven: \(Int(parsedDTO.confidenceScore * 100))%",
+                    details: auditReport
                 )
 
                 await ReceiptDevLogger.shared.finishSession(

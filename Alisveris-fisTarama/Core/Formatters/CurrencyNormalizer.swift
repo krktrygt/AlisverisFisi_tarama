@@ -61,7 +61,24 @@ public enum TurkishCurrencyNormalizer: Sendable {
             .replacingOccurrences(of: "TL", with: "", options: .caseInsensitive)
             .replacingOccurrences(of: "₺", with: "")
             .replacingOccurrences(of: "*", with: "")
+            .replacingOccurrences(of: "#", with: "")
+            .replacingOccurrences(of: "$", with: "")
+            .replacingOccurrences(of: "•", with: "")
+            .replacingOccurrences(of: "·", with: "")
             .trimmingCharacters(in: .whitespaces)
+
+        // Tarih formatlarını (dd.MM.yyyy, dd/MM/yyyy, dd-MM-yyyy) para tutarı sanmayı KESİNLİKLE engelle
+        if cleaned.range(of: #"^\d{1,2}[\./\-]\d{1,2}[\./\-]\d{2,4}$"#, options: .regularExpression) != nil {
+            return nil
+        }
+        let dotCount = cleaned.filter { $0 == "." }.count
+        if dotCount >= 2 && !cleaned.contains(",") {
+            let parts = cleaned.split(separator: ".")
+            let isThousands = parts.dropFirst().allSatisfy { $0.count == 3 }
+            if !isThousands {
+                return nil
+            }
+        }
 
         var isNegative = false
         if cleaned.hasPrefix("-") {
@@ -78,8 +95,16 @@ public enum TurkishCurrencyNormalizer: Sendable {
 
         // Türk Lirası noktalama standardizasyonu
         if cleaned.contains(",") && cleaned.contains(".") {
-            cleaned = cleaned.replacingOccurrences(of: ".", with: "")
-            cleaned = cleaned.replacingOccurrences(of: ",", with: ".")
+            if let lastDotIndex = cleaned.lastIndex(of: "."), let lastCommaIndex = cleaned.lastIndex(of: ",") {
+                if lastDotIndex > lastCommaIndex {
+                    // e.g. "1,390.00" -> virgül binlik, nokta kuruş
+                    cleaned = cleaned.replacingOccurrences(of: ",", with: "")
+                } else {
+                    // e.g. "1.390,00" -> nokta binlik, virgül kuruş
+                    cleaned = cleaned.replacingOccurrences(of: ".", with: "")
+                    cleaned = cleaned.replacingOccurrences(of: ",", with: ".")
+                }
+            }
         } else if cleaned.contains(",") {
             cleaned = cleaned.replacingOccurrences(of: ",", with: ".")
         } else if cleaned.contains(".") {

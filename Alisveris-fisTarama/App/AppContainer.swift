@@ -17,6 +17,7 @@ public final class AppContainer: ObservableObject {
     public let modelContainer: ModelContainer
     public let persistenceActor: ReceiptPersistenceActor
     public let imageDiskManager: any ReceiptImageDiskManagerProtocol
+    public let receiptMLService: ReceiptMLInferenceService
 
     public init(inMemory: Bool = false) {
         do {
@@ -36,6 +37,7 @@ public final class AppContainer: ObservableObject {
             self.modelContainer = container
             self.persistenceActor = ReceiptPersistenceActor(modelContainer: container)
             self.imageDiskManager = ReceiptImageDiskManager.shared
+            self.receiptMLService = ReceiptMLInferenceService.shared
         } catch {
             fatalError("SwiftData ModelContainer başlatılamadı: \(error.localizedDescription)")
         }
