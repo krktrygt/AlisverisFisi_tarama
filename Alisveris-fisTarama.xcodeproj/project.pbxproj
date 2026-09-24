@@ -353,6 +353,7 @@
 				DEVELOPMENT_TEAM = CQVDH425Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Fiş ve faturalarınızı tarayarak harcamalarınızı otomatik kaydetmek için kamera erişimi gereklidir.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -385,6 +386,7 @@
 				DEVELOPMENT_TEAM = CQVDH425Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Fiş ve faturalarınızı tarayarak harcamalarınızı otomatik kaydetmek için kamera erişimi gereklidir.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

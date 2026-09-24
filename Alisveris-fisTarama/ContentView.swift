@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject private var container: AppContainer
     @Query(sort: \ShoppingTrip.date, order: .reverse) private var trips: [ShoppingTrip]
 
+    @State private var isShowingScanner = false
     var body: some View {
         NavigationStack {
             Group {
@@ -47,6 +48,32 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("CepSepeti")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button{
+                        isShowingScanner = true
+                    } label: {
+                        Image(systemName: "camera.viewfinder")
+                            .font(.title3)
+                    }
+                }
+            }
+            // 3. DocumentScannerView'ı Sheet olarak aç
+            .sheet(isPresented: $isShowingScanner) {
+                DocumentScannerView(
+                    isPresented: $isShowingScanner,
+                    onScanCompleted: { scannedImages in
+                        print("Taranan sayfa sayısı: \(scannedImages.count)")
+                        // Bir sonraki adımda bu görselleri CoreImage & OCR hattına göndereceğiz!
+                    },
+                    onScanFailed: { error in
+                        print("Tarama hatası: \(error)")
+                    },
+                    onScanCancelled: {
+                        print("Kullanıcı taramayı iptal etti.")
+                    }
+                )
+            }
         }
     }
 }

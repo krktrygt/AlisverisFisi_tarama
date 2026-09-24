@@ -32,10 +32,10 @@ Her adımın karşısında [`mimari_tasarim.md`](file:///Users/korkuteryigit/Doc
   - [x] [1.2: SwiftData Entity Şeması ve Para Formatlayıcılar](#mikro-adım-12-swiftdata-entity-şeması-ve-para-formatlayıcılar)
   - [x] [1.3: Dosya Sistemi Tabanlı Görüntü Deposu](#mikro-adım-13-dosya-sistemi-tabanl%C4%B1-g%C3%B6r%C3%BCnt%C3%BC-deposu-receiptimagediskmanager)
   - [x] [1.4: Swift 6 Eşzamanlı Kalıcılık Aktörü](#mikro-adım-14-swift-6-e%C5%9Fzamanl%C4%B1-kal%C4%B1c%C4%B1l%C4%B1k-akt%C3%B6r%C3%BC-receiptpersistenceactor)
-- [ ] **FAZ 2: VisionKit Tarama ve Görüntü İyileştirme (0 / 3 Tamamlandı)**
-  - [ ] [2.1: VisionKit Doküman Tarayıcı Sarmalayıcısı](#mikro-adım-21-visionkit-dok%C3%BCman-taray%C3%BDc%C4%B1-sarmalay%C3%BDc%C4%B1s%C4%B1-documentscannerview)
-  - [ ] [2.2: Metal Destekli Görsel Ön İşleme Motoru](#mikro-adım-22-metal-destekli-g%C3%B6rsel-%C3%B6n-i%C5%9Fleme-motoru-receiptimagepreprocessor)
-  - [ ] [2.3: Apple Vision OCR ve Geometrik Satır Gruplayıcı](#mikro-adım-23-apple-vision-ocr-ve-geometrik-sat%C4%B1r-gruplay%C4%B1c%C4%B1-receiptlinesegmenter)
+- [x] **FAZ 2: VisionKit Tarama ve Görüntü İyileştirme (3 / 3 Tamamlandı)**
+  - [x] [2.1: VisionKit Doküman Tarayıcı Sarmalayıcısı](#mikro-adım-21-visionkit-dok%C3%BCman-taray%C3%BDc%C4%B1-sarmalay%C3%BDc%C4%B1s%C4%B1-documentscannerview)
+  - [x] [2.2: Metal Destekli Görsel Ön İşleme Motoru](#mikro-adım-22-metal-destekli-g%C3%B6rsel-%C3%B6n-i%C5%9Fleme-motoru-receiptimagepreprocessor)
+  - [x] [2.3: Apple Vision OCR ve Geometrik Satır Gruplayıcı](#mikro-adım-23-apple-vision-ocr-ve-geometrik-sat%C4%B1r-gruplay%C4%B1c%C4%B1-receiptlinesegmenter)
 - [ ] **FAZ 3: Genişletilebilir Pazar Profili ve Fiş Ayrıştırma (0 / 2 Tamamlandı)**
   - [ ] [3.1: Pazar Stratejisi Altyapısı ve Regex Kütüphaneleri](#mikro-adım-31-pazar-stratejisi-altyap%C4%B1s%C4%B1-ve-regex-k%C3%BCt%C3%BCphaneleri)
   - [ ] [3.2: Ayrıştırıcı Motor ve Güven Skorlama](#mikro-adım-32-ayr%C4%B1%C5%9Ft%C4%B1r%C4%B1c%C4%B1-motor-ve-g%C3%BCven-skorlama-receiptparserengine)
@@ -162,10 +162,10 @@ Her adımın karşısında [`mimari_tasarim.md`](file:///Users/korkuteryigit/Doc
 * **Geliştirilecek Dosyalar:**
   * `Alisveris-fisTarama/Features/Scan/Views/DocumentScannerView.swift`
 * **Checklist:**
-  - [ ] `VNDocumentCameraViewController.isSupported` kontrolüyle fiziksel cihazda Apple Belge Tarayıcı, simülatörde `PHPickerViewController` fallback'i açılıyor.
-  - [ ] Otomatik 4 köşe tespiti, auto-shutter ve donanımsal $90^\circ$ perspektif düzeltme teyit edildi (manuel OpenCV / homografi ihtiyacı sıfırlandı).
-  - [ ] Çoklu sayfa desteği (`scan.pageCount`) ve iptal delegateleri bağlandı; sheet temiz kapanıyor.
-  - [ ] Elde edilen dik açılı, kırpılmış temiz görsel doğrudan Vision OCR hattına aktarılıyor.
+  - [x] `VNDocumentCameraViewController.isSupported` kontrolüyle fiziksel cihazda Apple Belge Tarayıcı, simülatörde `PHPickerViewController` fallback'i açılıyor.
+  - [x] Otomatik 4 köşe tespiti, auto-shutter ve donanımsal $90^\circ$ perspektif düzeltme teyit edildi (manuel OpenCV / homografi ihtiyacı sıfırlandı).
+  - [x] Çoklu sayfa desteği (`scan.pageCount`) ve iptal delegateleri bağlandı; sheet temiz kapanıyor.
+  - [x] Elde edilen dik açılı, kırpılmış temiz görsel doğrudan Vision OCR hattına aktarılıyor.
 * **Doğrulama:**
   - Gerçek cihazda otomatik kenar tespiti ve auto-shutter'ın çalışması; simülatörde galeri fallback'inin açılması.
 
@@ -181,8 +181,8 @@ Her adımın karşısında [`mimari_tasarim.md`](file:///Users/korkuteryigit/Doc
 * **Geliştirilecek Dosyalar:**
   * `Alisveris-fisTarama/Services/ImageProcessing/ReceiptImagePreprocessor.swift`
 * **Checklist:**
-  - [ ] CIContext Metal cihazı üzerinden başlatılarak CPU darboğazı önlendi.
-  - [ ] Kat izi gölgeleri homojenize edildi; soluk termal yazılar Dinamik Sauvola ile belirginleştirildi.
+  - [x] CIContext Metal cihazı üzerinden başlatılarak CPU darboğazı önlendi.
+  - [x] Kat izi gölgeleri homojenize edildi; soluk termal yazılar Dinamik Sauvola ile belirginleştirildi.
 * **Test Komutu:**
   ```bash
   xcodebuild test -scheme Alisveris-fisTarama -destination 'platform=iOS Simulator,name=iPhone 16 Pro' -only-testing:Alisveris-fisTaramaTests/ReceiptImagePreprocessorTests
@@ -201,8 +201,8 @@ Her adımın karşısında [`mimari_tasarim.md`](file:///Users/korkuteryigit/Doc
   * `Alisveris-fisTarama/Services/OCR/ReceiptOCRService.swift`
   * `Alisveris-fisTarama/Services/OCR/ReceiptLineSegmenter.swift`
 * **Checklist:**
-  - [ ] Vision sol-alt orijinli koordinatları, UIKit üstten orijinli piksel uzayına tek geçişte çevrildi.
-  - [ ] Eğik çekilmiş fişlerde dominant eğim açısı $\theta$ telafi edilerek satır kopmaları önlendi.
+  - [x] Vision sol-alt orijinli koordinatları, UIKit üstten orijinli piksel uzayına tek geçişte çevrildi.
+  - [x] Eğik çekilmiş fişlerde dominant eğim açısı $\theta$ telafi edilerek satır kopmaları önlendi.
 * **Test Komutu:**
   ```bash
   xcodebuild test -scheme Alisveris-fisTarama -destination 'platform=iOS Simulator,name=iPhone 16 Pro' -only-testing:Alisveris-fisTaramaTests/ReceiptLineSegmenterTests
