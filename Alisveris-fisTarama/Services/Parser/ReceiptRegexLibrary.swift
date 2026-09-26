@@ -2,16 +2,18 @@
 //  ReceiptRegexLibrary.swift
 //  Alisveris-fisTarama
 //
-//  Created by Korkut Eryiğit on 24.09.2026.
+//  Created by Korkut Eryiğit on 23.09.2026.
 //
 
 import Foundation
 
-public struct ReceiptRegexLibrary {
-    // Tarih: 14.08.2026, 14/08/2026, 14-08-26
-    public static let datePattern = #"(?i)\b(0?[1-9]|[12][0-9]|3[01])[\.\/\-](0?[1-9]|1[012])[\.\/\-](20\d\d|\d\d)\b"#
+/// Türkiye Fiş ve Fatura Formatları için Optimize Edilmiş Regex Kütüphanesi
+public struct ReceiptRegexLibrary: Sendable {
 
-    // Saat: 14:25, 14:25:30, SAAT: 09:15
+    // Tarih: 14.08.2026, 14/08/2026, 14-08-2026, 14.08.26
+    public static let datePattern = #"\b([0-3]?[0-9])[\./\-]([0-1]?[0-9])[\./\-](20\d{2}|\d{2})\b"#
+
+    // Saat: 14:25, 14.25, 14:25:03, SAAT: 14:25
     public static let timePattern = #"(?i)(?:SAAT\s*[:\.]?\s*)?\b([01]?[0-9]|2[0-3])[:\.]([0-5][0-9])(?::([0-5][0-9]))?\b"#
 
     // Fiş No: FİŞ NO: 0142, FIS NO:0042, İŞLEM NO : 129, FATURA NO: Y092026007744519, SIRA NO: 408
@@ -25,8 +27,8 @@ public struct ReceiptRegexLibrary {
     // Para Tutarı: 39,50, 1.250,00, *120,50, *67.00
     public static let pricePattern = #"(?i)[*]?\s*(\d{1,4}(?:[\.,]\d{3})*[\.,]\d{2})\s*(?:TL|₺)?"#
 
-    // KDV Oranı: *01, *1, %10, %20, *08, *18, %1.
-    public static let vatRatePattern = #"(?i)(?:[*%]|KDV\s*[%*]?)\s*(0?1|0?8|10|18|20)\b"#
+    // KDV Oranı: *01, *1, %10, %20, *08, *18, %1., X1., 31 ., X20
+    public static let vatRatePattern = #"(?i)(?:[%*·•#Xx3!Iİl]|KDV\s*[%*]?)\s*(0?[18]|10|18|20)\b"#
 
     // Miktar ve Birim: 1,250 kg x 45,00, 3 ADET * 12,50 TL, 0.462 kg X 1,390.00, 0.85 kg X 89.90
     public static let quantityUnitPattern = #"(?i)(\d+[\.,]?\d*)\s*(KG|KİLO|KILO|GR|G|GRAM|ADET|AD|LT|L|LİTRE|LITRE|PK|PAKET)\s*[xX\*]\s*(\d{1,4}(?:[\.,]\d{3})*[\.,]\d{1,2})"#
@@ -43,9 +45,9 @@ public struct ReceiptRegexLibrary {
     // Ödeme Tipleri
     public static let paymentMethodPattern = #"(?i)\b(NAK[İI]T|KRED[İI]\s*KARTI|BANKA\s*KARTI|IPPOS|TEMASSIZ|TROY|VISA|MASTERCARD)\b"#
 
-    // Üstbilgi ve Belge Meta Desenleri
-    public static let headerMetadataPattern = #"(?i)\b(E-AR[SŞ][Iİ]V|FATURA|BILGI\s*FISI|BİLGİ\s*FİŞİ|YENI\s*NESIL|ÖKC|OKC|KASİYER|KASIYER|SICIL|MERSIS|MERSİS)\b"#
+    // Başlık ve Üstveri Desenleri
+    public static let headerMetadataPattern = #"(?i)\b(TICARET|TİCARET|A\.S\.|A\.Ş\.|LTD|ŞTİ|STI|MAĞAZACILIK|MAGAZACILIK|SUBE|ŞUBE|FATURA|IRSALIYE|İRSALİYE|BILGI FISI|BİLGİ FİŞİ|E-ARSIV|E-ARŞİV|MUKELLEF|MÜKELLEF|VDM|VERGI DAIRESI|VERGİ DAİRESİ|MERSIS|MERSİS|SICIL|SİCİL|KASİYER|KASIYER|KASA NO|TERMINAL|SERI NO|SERİ NO)\b"#
 
-    // Fiş Sonu / Sentinel Desenleri
-    public static let receiptFooterSentinelPattern = #"(?i)\b(TEŞEKKÜR\s*EDER[Iİ]Z|TESEKKUR\s*EDERIZ|YINE\s*BEKLERIZ|YİNE\s*BEKLERİZ|GÜLE\s*GÜLE\s*KULLANIN|MALI\s*DEĞERİ\s*YOKTUR|MALİ\s*DEGERI\s*YOKTUR|BİLGİ\s*İÇİNDİR)\b"#
+    // Fiş Kapanış / Altbilgi / Gürültü Belirteçleri
+    public static let receiptFooterSentinelPattern = #"(?i)\b(MALI DEGERI YOKTUR|MALİ DEĞERİ YOKTUR|BILGI AMACLIDIR|BİLGİ AMAÇLIDIR|GULE GULE|GÜLE GÜLE|YINE BEKLERIZ|YİNE BEKLERİZ|TESSEKKUR|TEŞEKKÜR|IYI GUNLER|İYİ GÜNLER|BUNU SAKLAYINIZ|GECERSIZDIR|GEÇERSİZDİR|KART SAHIBI|KART SAHİBİ|KOPYA|AIDIR|AYDIR)\b"#
 }

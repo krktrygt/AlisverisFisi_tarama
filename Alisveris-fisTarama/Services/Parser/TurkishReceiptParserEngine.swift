@@ -327,7 +327,9 @@ public final class TurkishReceiptParserEngine: Sendable {
                     return (u.contains("POSET") || u.contains("POŞET")) && item.rightmostPrice == nil
                 }) {
                     let unpricedCandidate = itemBuffer.remove(at: idx)
-                    let cleanedName = TurkishProductNameCleaner.clean(rawName: unpricedCandidate.text)
+                    let cleanedResult = TurkishProductNameCleaner.cleanAndExtractDetails(rawName: unpricedCandidate.text)
+                    let cleanedName = cleanedResult.cleanName
+                    let bagTax = cleanedResult.detectedTaxRate ?? parseTaxRate(from: unpricedCandidate.text)
                     let item = ParsedItemDTO(
                         rawName: unpricedCandidate.text,
                         normalizedName: cleanedName,
@@ -335,9 +337,12 @@ public final class TurkishReceiptParserEngine: Sendable {
                         unit: .piece,
                         unitPrice: p,
                         totalPrice: p,
-                        taxRate: parseTaxRate(from: unpricedCandidate.text),
+                        taxRate: bagTax,
                         confidenceScore: Double(calculateConfidence(boxes: unpricedCandidate.line.words)),
-                        boundingBox: computeNormalizedRect(boxes: unpricedCandidate.line.words, imageSize: imageSize)
+                        boundingBox: computeNormalizedRect(boxes: unpricedCandidate.line.words, imageSize: imageSize),
+                        packageQuantity: cleanedResult.packageQuantity,
+                        packageUnit: cleanedResult.packageUnit,
+                        packCount: cleanedResult.packCount
                     )
                     lineItems.append(item)
                     auditLog.append("\(lineLog) -> [BEKLEYEN POŞET KAPATILDI] \"\(cleanedName)\": \(p) TL")
@@ -565,7 +570,11 @@ public final class TurkishReceiptParserEngine: Sendable {
             }
         }
 
-        let cleanedName = TurkishProductNameCleaner.clean(rawName: rawName)
+        let cleanedResult = TurkishProductNameCleaner.cleanAndExtractDetails(rawName: rawName)
+        let cleanedName = cleanedResult.cleanName
+        if let detectedTax = cleanedResult.detectedTaxRate, taxRate == Decimal(sign: .plus, exponent: -2, significand: 1) {
+            taxRate = detectedTax
+        }
         let lineConfidence = calculateConfidence(boxes: allBoxes)
         let normRect = computeNormalizedRect(boxes: allBoxes, imageSize: imageSize)
 
@@ -578,7 +587,10 @@ public final class TurkishReceiptParserEngine: Sendable {
             totalPrice: totalPrice,
             taxRate: taxRate,
             confidenceScore: Double(lineConfidence),
-            boundingBox: normRect
+            boundingBox: normRect,
+            packageQuantity: cleanedResult.packageQuantity,
+            packageUnit: cleanedResult.packageUnit,
+            packCount: cleanedResult.packCount
         )
 
         lineItems.append(parsed)

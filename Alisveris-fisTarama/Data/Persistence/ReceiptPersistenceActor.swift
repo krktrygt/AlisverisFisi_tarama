@@ -101,13 +101,19 @@ public actor ReceiptPersistenceActor: ReceiptPersistenceServiceProtocol {
                 taxRate: itemDTO.taxRate,
                 category: resolvedCategory,
                 trip: trip,
-                confidenceScore: itemDTO.confidenceScore
+                confidenceScore: itemDTO.confidenceScore,
+                packageQuantity: itemDTO.packageQuantity,
+                packageUnit: itemDTO.packageUnit,
+                packCount: itemDTO.packCount
             )
             context.insert(item)
 
             // Ambalaj çözümü ve birim fiyat normalizasyonu
             let (resolvedQuantity, resolvedUnit): (Decimal, UnitType)
-            if let pkg = ProductPackagingParser.parse(from: itemDTO.rawName) {
+            if let pkgQty = itemDTO.packageQuantity, let pkgUnit = itemDTO.packageUnit {
+                resolvedQuantity = pkgQty * Decimal(itemDTO.packCount ?? 1)
+                resolvedUnit = pkgUnit
+            } else if let pkg = ProductPackagingParser.parse(from: itemDTO.rawName) {
                 resolvedQuantity = pkg.rawQuantity * Decimal(pkg.packCount)
                 resolvedUnit = pkg.unit
             } else {

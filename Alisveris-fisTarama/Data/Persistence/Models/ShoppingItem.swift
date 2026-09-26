@@ -21,12 +21,22 @@ public final class ShoppingItem {
     public var taxRate: Decimal
     public var confidenceScore: Double
 
+    // Yapılandırılmış Ambalaj ve Gramaj Özellikleri (Veri Koruma Standardı)
+    public var packageQuantity: Decimal?
+    public var packageUnitRaw: String?
+    public var packCount: Int?
+
     public var category: Category?
     public var trip: ShoppingTrip?
 
     public var unit: UnitType {
         get { UnitType(rawValue: unitRaw) ?? .piece }
         set { unitRaw = newValue.rawValue }
+    }
+
+    public var packageUnit: UnitType? {
+        get { packageUnitRaw.flatMap { UnitType(rawValue: $0) } }
+        set { packageUnitRaw = newValue?.rawValue }
     }
 
     public init(
@@ -41,7 +51,10 @@ public final class ShoppingItem {
         taxRate: Decimal,
         category: Category? = nil,
         trip: ShoppingTrip? = nil,
-        confidenceScore: Double = 1.0
+        confidenceScore: Double = 1.0,
+        packageQuantity: Decimal? = nil,
+        packageUnit: UnitType? = nil,
+        packCount: Int? = nil
     ) {
         self.id = id
         self.rawName = rawName
@@ -55,5 +68,8 @@ public final class ShoppingItem {
         self.category = category
         self.trip = trip
         self.confidenceScore = confidenceScore
+        self.packageQuantity = packageQuantity
+        self.packageUnitRaw = packageUnit?.rawValue
+        self.packCount = packCount
     }
 }

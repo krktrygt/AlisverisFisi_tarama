@@ -21,6 +21,11 @@ public struct ParsedItemDTO: Sendable, Identifiable, Codable {
     public var confidenceScore: Double
     public var boundingBox: NormalizedRect
 
+    // Yapılandırılmış Ambalaj ve Gramaj Özellikleri (Veri Koruma Standardı)
+    public var packageQuantity: Decimal?
+    public var packageUnit: UnitType?
+    public var packCount: Int?
+
     public init(
         id: UUID = UUID(),
         rawName: String,
@@ -32,7 +37,10 @@ public struct ParsedItemDTO: Sendable, Identifiable, Codable {
         taxRate: Decimal = 0.01,
         categoryId: UUID? = nil,
         confidenceScore: Double = 1.0,
-        boundingBox: NormalizedRect = NormalizedRect(originX: 0, originY: 0, width: 0, height: 0)
+        boundingBox: NormalizedRect = NormalizedRect(originX: 0, originY: 0, width: 0, height: 0),
+        packageQuantity: Decimal? = nil,
+        packageUnit: UnitType? = nil,
+        packCount: Int? = nil
     ) {
         self.id = id
         self.rawName = rawName
@@ -45,5 +53,8 @@ public struct ParsedItemDTO: Sendable, Identifiable, Codable {
         self.categoryId = categoryId
         self.confidenceScore = confidenceScore
         self.boundingBox = boundingBox
+        self.packageQuantity = packageQuantity
+        self.packageUnit = packageUnit
+        self.packCount = packCount
     }
 }

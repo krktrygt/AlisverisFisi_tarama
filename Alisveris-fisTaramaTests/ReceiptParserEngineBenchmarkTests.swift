@@ -46,11 +46,15 @@ struct ReceiptParserEngineBenchmarkTests {
         #expect(parsed.paymentMethod == .creditCard)
         #expect(parsed.totalAmount == Decimal(string: "74.50"))
 
-        // Kalem Doğrulaması
+        // Kalem Doğrulaması (Temiz İsim & Yapılandırılmış Ambalaj Standardı)
         #expect(parsed.items.count == 2)
-        #expect(parsed.items[0].normalizedName == "DOST SÜT 1L")
+        #expect(parsed.items[0].normalizedName == "DOST SÜT")
+        #expect(parsed.items[0].packageQuantity == Decimal(1))
+        #expect(parsed.items[0].packageUnit == .liter)
         #expect(parsed.items[0].totalPrice == Decimal(string: "29.50"))
-        #expect(parsed.items[1].normalizedName == "EFSANE UN 2KG")
+        #expect(parsed.items[1].normalizedName == "EFSANE UN")
+        #expect(parsed.items[1].packageQuantity == Decimal(2))
+        #expect(parsed.items[1].packageUnit == .kilogram)
         #expect(parsed.items[1].totalPrice == Decimal(string: "45.00"))
 
         // Güven Skoru Doğrulaması

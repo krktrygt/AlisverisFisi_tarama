@@ -13,7 +13,22 @@ public struct ProductPackagingParser: Sendable {
         pattern: #"(?i)(?:(?<packCount>\d+)\s*[*xX]\s*)?(?<quantity>\d+(?:[.,]\d+)?)\s*['’]?\s*(?<unit>kg|kilo|gr|g|gram|lt|l|litre|ml|cl|adet|ad|pk|paket|li|lu|lü|lı)\b"#
     )
 
-    public static func parse(from text: String) -> (rawQuantity: Decimal, unit: UnitType, packCount: Int)? {
+    public struct PackagingResult: Sendable, Equatable {
+        public let remainingText: String
+        public let rawQuantity: Decimal
+        public let unit: UnitType
+        public let packCount: Int
+
+        public init(remainingText: String, rawQuantity: Decimal, unit: UnitType, packCount: Int) {
+            self.remainingText = remainingText
+            self.rawQuantity = rawQuantity
+            self.unit = unit
+            self.packCount = packCount
+        }
+    }
+
+    /// Ham metinden ambalaj bilgisini çıkarır ve geriye kalan temiz metni ile yapılandırılmış gramajı döner
+    public static func extract(from text: String) -> PackagingResult? {
         let range = NSRange(text.startIndex..., in: text)
         guard let match = packagingRegex.firstMatch(in: text, options: [], range: range) else {
             return nil
@@ -47,9 +62,30 @@ public struct ProductPackagingParser: Sendable {
             finalQty = rawQty * Decimal(10)
             unit = .milliliter
         case "pk", "paket": unit = .pack
-        default: unit = .piece
+        case "adet", "ad", "li", "lu", "lü", "lı":
+            unit = .piece
+            if packCount == 1 && (unitRaw == "li" || unitRaw == "lu" || unitRaw == "lü" || unitRaw == "lı") {
+                packCount = NSDecimalNumber(decimal: rawQty).intValue
+            }
+        default:
+            unit = .piece
         }
 
-        return (finalQty, unit, packCount)
+        let nsText = text as NSString
+        let remaining = nsText.replacingCharacters(in: match.range, with: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return PackagingResult(
+            remainingText: remaining,
+            rawQuantity: finalQty,
+            unit: unit,
+            packCount: packCount
+        )
+    }
+
+    /// Geriye dönük uyumluluk: Sadece ambalaj sayı ve birimini döner
+    public static func parse(from text: String) -> (rawQuantity: Decimal, unit: UnitType, packCount: Int)? {
+        guard let res = extract(from: text) else { return nil }
+        return (res.rawQuantity, res.unit, res.packCount)
     }
 }
