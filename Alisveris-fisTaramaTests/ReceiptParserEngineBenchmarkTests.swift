@@ -368,4 +368,100 @@ struct ReceiptParserEngineBenchmarkTests {
         // 3. Güven skoru yüksek olmalı
         #expect(parsed.confidenceScore >= 0.85)
     }
+
+    @Test func testRealDeviceSession4FileMultiItemWeightedAndStackedReceiptFix() async {
+        let mlService = ReceiptMLInferenceService.shared
+        let engine = TurkishReceiptParserEngine(mlService: mlService)
+        let imageSize = CGSize(width: 1088, height: 3500)
+
+        // Gerçek cihazdan gelen Session 4 (26.09.2026 FİLE Market) OCR satırları
+        let session4Lines: [(String, CGFloat)] = [
+            ("E-Arsiv Fatura", 380),
+            ("FILE TIMUÇIN CADDESI / TALAS / KAYS", 456),
+            ("FİLE MARKET MAGAZACILIK ANONIM ŞİRKETİ", 500),
+            ("MEVLANA MAH. MEHMET TIMUÇIN CAD. NO:4/A", 543),
+            ("TALAS / KAYSERİ", 588),
+            ("Sarigazi VDM 3871427056", 644),
+            ("FATURA NO: Y092026007744519", 747),
+            ("26.09.2026 13:21 Sira No : 408", 787),
+            ("ETTN:e7ff388e-7164-4fe1-ba5d-e08a6bba59c7", 845),
+            ("22040012209607980408", 965),
+            ("TCKN/VKN: 11111111111 '¿NİHAİ TÜKETİCİ", 1022),
+            ("2011", 1236),
+            ("N.ANKARA A.SEHR.500G %1. *37.50", 1284),
+            ("YUMURTA OLU ABALICİ %1. *169.00", 1332),
+            ("0.85 kg X 89.9îŚ", 1374),
+            ("GOLDEN ELMA *76.42", 1417),
+            ("SÜZMEPEY 500G HARRAS %1. *119.00", 1462),
+            ("0.6 kg X 49.90", 1516),
+            ("ÇENGELKÖY SALATALIK %1. *29.94", 1558),
+            ("0.826 kg X 39.90", 1608),
+            ("PATATES (DÖKME) %1. *32.96", 1654),
+            ("0.854 kg X 39.90", 1703),
+            ("DOMATES %1 . *34.07", 1749),
+            ("ALIŞVERİŞ POŞETİ %20 *1.00", 1797),
+            ("Disimeno ns", 1883),
+            ("TOPLAM KDV *5.11", 1935),
+            ("Odenecek KDV Dahil Tutar", 1974),
+            ("*499.89", 2043),
+            ("Ippos kredi Karti (1)", 2073),
+            ("IS BANKASI", 2172),
+            ("T:51A65A01", 2185),
+            ("658768******1168", 2217),
+            ("26.09.2026 13:21 B:1052 S:46", 2235),
+            ("Ref. No:626918804595", 2276),
+            ("Onay No: 121175", 2307),
+            ("KOV TUTAR KDV DAHIL", 2383),
+            ("KDV MATRAH *5.11 *499.89", 2411),
+            ("21 - 493.94", 2469),
+            ("%20 0.83 *0.17 *1.00", 2515)
+        ]
+
+        let segmentedLines = session4Lines.map { text, y in
+            let words = text.components(separatedBy: " ").enumerated().map { idx, w in
+                OCRWordBox(text: w, confidence: 0.98, boundingBox: CGRect(x: CGFloat(50 + idx * 80), y: y, width: 70, height: 24))
+            }
+            return SegmentedReceiptLine(words: words)
+        }
+
+        let parsed = await engine.parse(segmentedLines: segmentedLines, imageSize: imageSize)
+
+        // 1. Toplam 8 adet gerçek ürün tespit edilmeli (Disimeno ns gürültüsü atılmalı, 4 adet tartılı ürün doğru bağlanmalı)
+        #expect(parsed.items.count == 8)
+
+        // 2. Tartılı ürünlerin miktarları ve isimleri doğru sentezlenmeli
+        let elma = parsed.items.first(where: { $0.rawName.contains("ELMA") || $0.normalizedName.contains("ELMA") })
+        #expect(elma != nil)
+        #expect(elma?.totalPrice == Decimal(string: "76.42"))
+        #expect(elma?.quantity == Decimal(string: "0.85"))
+
+        let salatalik = parsed.items.first(where: { $0.rawName.contains("SALATALIK") || $0.normalizedName.contains("SALATALIK") })
+        #expect(salatalik != nil)
+        #expect(salatalik?.totalPrice == Decimal(string: "29.94"))
+        #expect(salatalik?.quantity == Decimal(string: "0.6"))
+
+        let patates = parsed.items.first(where: { $0.rawName.contains("PATATES") || $0.normalizedName.contains("PATATES") })
+        #expect(patates != nil)
+        #expect(patates?.totalPrice == Decimal(string: "32.96"))
+        #expect(patates?.quantity == Decimal(string: "0.826"))
+
+        let domates = parsed.items.first(where: { $0.rawName.contains("DOMATES") || $0.normalizedName.contains("DOMATES") })
+        #expect(domates != nil)
+        #expect(domates?.totalPrice == Decimal(string: "34.07"))
+        #expect(domates?.quantity == Decimal(string: "0.854"))
+
+        // 3. Kalem toplamı ile genel toplam kuruşu kuruşuna eşit olmalı
+        let totalSum = parsed.items.reduce(Decimal(0)) { $0 + $1.totalPrice }
+        #expect(totalSum == Decimal(string: "499.89"))
+        #expect(parsed.totalAmount == Decimal(string: "499.89"))
+
+        // 4. KDV tutarı doğru yakalanmalı
+        #expect(parsed.taxTotal == Decimal(string: "5.11"))
+
+        // 5. Aritmetik %100 tuttuğu için güven skoru yüksek olmalı
+        #expect(parsed.confidenceScore >= 0.85)
+
+        // 6. Mağaza FİLE olarak tanınmalı
+        #expect(parsed.storeName == "FİLE")
+    }
 }

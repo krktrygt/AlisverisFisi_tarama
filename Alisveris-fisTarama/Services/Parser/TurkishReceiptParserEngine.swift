@@ -14,7 +14,7 @@ public final class TurkishReceiptParserEngine: Sendable {
     private let profile: RetailMarketProfile
     private let mlService: ReceiptMLInferenceService?
 
-    private static let vatTagPattern = #"(?i)^[%*·]?\s*0?[18]0?\.?$"#
+    private static let vatTagPattern = #"(?i)^[%*·!Iİl]?\s*(?:0?[18]|10|18|20)\.?$"#
 
     public init(
         profile: RetailMarketProfile = TurkeyRetailProfile(),
@@ -81,9 +81,7 @@ public final class TurkishReceiptParserEngine: Sendable {
         var totalDiscountValue: Decimal = 0.0
         var detectedPaymentMethod: PaymentMethod = .creditCard
 
-        var pendingItemName: String?
-        var pendingItemBoxes: [OCRWordBox] = []
-        var pendingSubline: PendingSubline? = nil
+        var itemBuffer: [CandidateItemLine] = []
         var pendingGrandTotalLabel: Bool = false
         var pendingTaxLabel: Bool = false
         var isPastItemSection = false
@@ -108,8 +106,7 @@ public final class TurkishReceiptParserEngine: Sendable {
             // Ürünler henüz başlamamışken veya satır bariz bir üstveriyse (Fatura, ETTN, Barkod, VKN, Tarih, Mağaza)
             // model ne derse desin (TOTAL_LINE veya TAX_SUMMARY_LINE dahil) başlık olarak işaretlenir.
             if isHeaderOrMetadataLine(lineText) && (lineItems.isEmpty || isPureMetadataOrHeader(lineText)) {
-                pendingItemName = nil
-                pendingItemBoxes = []
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
                 pendingGrandTotalLabel = false
                 auditLog.append("\(lineLog) -> [ATLANDI: Başlık / Üstveri]")
                 continue
@@ -124,7 +121,6 @@ public final class TurkishReceiptParserEngine: Sendable {
                     }
                 }
                 pendingTaxLabel = false
-                // Eğer satır sadece KDV tutarıysa devam et
                 if line.words.count <= 2 {
                     continue
                 }
@@ -151,8 +147,8 @@ public final class TurkishReceiptParserEngine: Sendable {
             let isMLGrandTotal = (classifiedRole == .totalLine) && hasGrandTotalKeywords && !upperText.contains("TOPLAM KDV")
 
             if (isRegexGrandTotal || isMLGrandTotal) && !lineItems.isEmpty {
-                // Özel Durum: Eğer bu satır "Odenecek KDV Dahil Tutar" ise ve önceki satır fiyatsız "TOPLAM KDV" idiyse
-                // bu satırdaki fiyat KDV'ye ait olabilir, asıl toplam sonraki satırda olabilir.
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
+
                 let hasOdenecek = upperText.contains("ODENECEK") || upperText.contains("ÖDENECEK")
 
                 if let match = evaluateRegex(pattern: ReceiptRegexLibrary.grandTotalPattern, text: lineText),
@@ -162,13 +158,9 @@ public final class TurkishReceiptParserEngine: Sendable {
                     }
                     isPastItemSection = true
                     pendingGrandTotalLabel = false
-                    pendingItemName = nil
-                    pendingItemBoxes = []
-                    pendingSubline = nil
                     auditLog.append("\(lineLog) -> [GENEL TOPLAM (Regex)] \(amount) TL")
                     continue
                 } else if let (amount, _) = findRightmostPrice(in: line) {
-                    // Eğer Odenecek KDV Dahil Tutar satırında ufak bir tutar (< %20 kalem toplamı) varsa bu KDV tutarıdır
                     let sumSoFar = lineItems.reduce(Decimal(0)) { $0 + $1.totalPrice }
                     if hasOdenecek && sumSoFar > 0 && amount < (sumSoFar * 0.3) {
                         if totalTaxValue == nil { totalTaxValue = amount }
@@ -182,18 +174,11 @@ public final class TurkishReceiptParserEngine: Sendable {
                         }
                         isPastItemSection = true
                         pendingGrandTotalLabel = false
-                        pendingItemName = nil
-                        pendingItemBoxes = []
-                        pendingSubline = nil
                         auditLog.append("\(lineLog) -> [GENEL TOPLAM (Fiyat)] \(amount) TL")
                         continue
                     }
                 } else {
-                    // Etiket var ama tutar hemen bir sonraki satırda
                     pendingGrandTotalLabel = true
-                    pendingItemName = nil
-                    pendingItemBoxes = []
-                    pendingSubline = nil
                     auditLog.append("\(lineLog) -> [GENEL TOPLAM ETİKETİ BEKLİYOR]")
                     continue
                 }
@@ -201,6 +186,7 @@ public final class TurkishReceiptParserEngine: Sendable {
 
             // 4. ARA TOPLAM
             if classifiedRole == .subtotalLine || upperText.contains("ARA TOPLAM") || upperText.contains("ARATOPLAM") {
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
                 if let match = evaluateRegex(pattern: ReceiptRegexLibrary.subtotalPattern, text: lineText),
                    let amount = CurrencyNormalizer.parseDecimal(from: match) {
                     subtotalValue = amount
@@ -211,6 +197,7 @@ public final class TurkishReceiptParserEngine: Sendable {
 
             // 5. KDV ÖZETİ VE TABLOSU (TAX SUMMARY GATE)
             if isRealTaxSummaryLine(role: classifiedRole, text: lineText, tokens: tokensForLine) {
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
                 var foundTax: Decimal?
                 if let taxToken = tokensForLine.first(where: { $0.label == "TAX_AMOUNT" }),
                    let dec = CurrencyNormalizer.parseDecimal(from: taxToken.token) {
@@ -228,9 +215,6 @@ public final class TurkishReceiptParserEngine: Sendable {
                     totalTaxValue = ft
                 }
 
-                pendingItemName = nil
-                pendingItemBoxes = []
-                pendingSubline = nil
                 auditLog.append("\(lineLog) -> [KDV SATIRI] (Tutar: \(foundTax ?? 0) TL)")
                 continue
             }
@@ -240,15 +224,14 @@ public final class TurkishReceiptParserEngine: Sendable {
                 if !lineItems.isEmpty {
                     isPastItemSection = true
                 }
-                pendingItemName = nil
-                pendingItemBoxes = []
-                pendingSubline = nil
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
                 auditLog.append("\(lineLog) -> [ATLANDI: Fiş Sonu / Gürültü]")
                 continue
             }
 
             // 7. ÖDEME YÖNTEMİ
             if classifiedRole == .paymentLine || isPaymentMatch(lineText) {
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
                 if let match = evaluateRegex(pattern: ReceiptRegexLibrary.paymentMethodPattern, text: lineText) {
                     detectedPaymentMethod = mapPaymentMethod(from: match)
                 } else {
@@ -260,28 +243,22 @@ public final class TurkishReceiptParserEngine: Sendable {
                         grandTotalValue = payAmount
                     }
                 }
-                pendingItemName = nil
-                pendingItemBoxes = []
-                pendingSubline = nil
                 auditLog.append("\(lineLog) -> [ÖDEME BİLGİSİ] \(detectedPaymentMethod.rawValue)")
                 continue
             }
 
             // 8. İNDİRİM SATIRI
             if !isPastItemSection && (classifiedRole == .discountLine || isDiscountLine(lineText)) {
+                flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
                 if let amount = extractAmount(from: lineText) {
                     totalDiscountValue += abs(amount)
                     auditLog.append("\(lineLog) -> [İNDİRİM SATIRI] -\(abs(amount)) TL")
                 }
-                pendingItemName = nil
-                pendingItemBoxes = []
-                pendingSubline = nil
                 continue
             }
 
             // Eğer ürün bölümü kesin olarak bittiyse (altbilgiye geçildiyse)
             if isPastItemSection {
-                // Eğer satır tek başına bir fiyatsa ve mevcut toplamdan büyükse genel toplamı güncelle
                 if let (trailingPrice, _) = findRightmostPrice(in: line), line.words.count <= 2 {
                     if let cur = grandTotalValue, trailingPrice > cur {
                         grandTotalValue = trailingPrice
@@ -293,199 +270,126 @@ public final class TurkishReceiptParserEngine: Sendable {
                 continue
             }
 
-            // 9. ÇİFT YÖNLÜ FSM: MİKTAR VE BİRİM ALT SATIRI (WEIGHT_QTY_PRICE)
-            if classifiedRole == .weightQtyPrice || isQuantitySubline(lineText) {
-                if let subline = parseQuantitySubline(lineText) {
-                    let (subQty, subUnit, subUPrice) = subline
-                    let rightmostPrice = findRightmostPrice(in: line)?.0
+            // 9. DİNAMİK YIĞIN BİRLEŞTİRİCİ (ITEM BUFFER REDUCTION ENGINE)
+            let qInfo = parseQuantitySubline(lineText)
+            let isWeightLine = classifiedRole == .weightQtyPrice || isQuantitySubline(lineText) || qInfo != nil
+            let rightmostPriceResult = findRightmostPrice(in: line)
 
-                    var lineTotalFromSubline: Decimal? = nil
-                    if let rp = rightmostPrice, rp != subUPrice, abs(subQty * subUPrice - rp) <= 0.05 {
-                        lineTotalFromSubline = rp
-                    }
-
-                    // Akış A: Önce ürün adı gelmiş, ardından tartı gelmiş
-                    if let pendingName = pendingItemName {
-                        let totalP = lineTotalFromSubline ?? rightmostPrice ?? (subQty * subUPrice)
-                        let combinedBoxes = pendingItemBoxes + line.words
-                        let normRect = computeNormalizedRect(boxes: combinedBoxes, imageSize: imageSize)
-                        let cleaned = TurkishProductNameCleaner.clean(rawName: pendingName)
-                        let dynConfidence = Double(calculateConfidence(boxes: combinedBoxes))
-
-                        let item = ParsedItemDTO(
-                            rawName: pendingName,
-                            normalizedName: cleaned,
-                            quantity: subQty,
-                            unit: subUnit,
-                            unitPrice: subUPrice,
-                            totalPrice: totalP,
-                            taxRate: parseTaxRate(from: lineText),
-                            confidenceScore: dynConfidence,
-                            boundingBox: normRect
-                        )
-                        lineItems.append(item)
-                        auditLog.append("\(lineLog) -> [ÜRÜN EKLENDİ - Akış A] \"\(item.normalizedName)\" (\(subQty) \(subUnit.rawValue) x \(subUPrice) = \(totalP) TL)")
-                        pendingItemName = nil
-                        pendingItemBoxes = []
-                        pendingSubline = nil
-                        continue
-                    } else if let lastIdx = lineItems.indices.last,
-                              pendingSubline == nil,
-                              abs(subQty * subUPrice - lineItems[lastIdx].totalPrice) <= 0.05 {
-                        lineItems[lastIdx].quantity = subQty
-                        lineItems[lastIdx].unit = subUnit
-                        lineItems[lastIdx].unitPrice = subUPrice
-                        auditLog.append("\(lineLog) -> [ÖNCEKİ ÜRÜNE MİKTAR EKLENDİ] \"\(lineItems[lastIdx].normalizedName)\" (\(subQty) \(subUnit.rawValue))")
-                        continue
+            // Bu satırda bulunan fiyat nihai satır toplamı mı yoksa sadece birim fiyat mı?
+            var lineTotal: (Decimal, OCRWordBox)? = nil
+            if let (p, box) = rightmostPriceResult {
+                if let q = qInfo {
+                    if let up = q.unitPrice {
+                        let expected = q.qty * up
+                        if abs(expected - p) <= 0.10 && abs(p - up) > 0.10 {
+                            // Hem birim fiyat hem nihai toplam var (örn: "0.462 kg X 1,390.00 *642.18")
+                            lineTotal = (p, box)
+                        } else {
+                            // Sadece birim fiyat var (örn: "0.85 kg X 89.90") -> nihai toplam DEĞİLDİR!
+                            lineTotal = nil
+                        }
                     } else {
-                        // Akış B (FİLE Market): Önce tartı satırı geldi, ürün adı bir sonraki satırda gelecek!
-                        pendingSubline = PendingSubline(
-                            quantity: subQty,
-                            unit: subUnit,
-                            unitPrice: subUPrice,
-                            lineTotal: lineTotalFromSubline,
-                            words: line.words
-                        )
-                        auditLog.append("\(lineLog) -> [TARTI SAKLANDI - Akış B] \(subQty) \(subUnit.rawValue) x \(subUPrice) TL")
-                        continue
+                        // Birim fiyat eksikse veya tek bir fiyat varsa, tartı satırındaki fiyat nihai toplam değildir
+                        lineTotal = nil
                     }
+                } else if isWeightLine {
+                    // Satır tartı/miktar satırı olarak etiketlendiyse tek fiyat birim fiyattır
+                    lineTotal = nil
+                } else {
+                    lineTotal = (p, box)
                 }
             }
 
-            // 10. ÜRÜN VE FİYAT SATIRI EŞLEME (PRODUCT_LINE / Regex Hakemi)
-            if let (price, priceBox) = findRightmostPrice(in: line) {
-                let namePartInLine = extractNamePart(from: line, before: priceBox).trimmingCharacters(in: .whitespacesAndNewlines)
-                let prodTokens = tokensForLine.filter { $0.label == "PROD_NAME" }
-                let hasDistinctProdName = !namePartInLine.isEmpty && (namePartInLine.count >= 4 || !prodTokens.isEmpty)
+            let prodTokens = tokensForLine.filter { $0.label == "PROD_NAME" }
+            let namePartInLine: String
+            if let (_, box) = rightmostPriceResult {
+                namePartInLine = extractNamePart(from: line, before: box).trimmingCharacters(in: .whitespacesAndNewlines)
+            } else {
+                namePartInLine = lineText.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
 
-                // Çoklu Satır Ayrıştırma (Eğimli Fişlerde Poşet 1 TL ve Lezita Ayrımı):
-                if let pending = pendingItemName, hasDistinctProdName {
-                    let cleanedPending = TurkishProductNameCleaner.clean(rawName: pending)
-                    let pendingItem = ParsedItemDTO(
-                        rawName: pending,
-                        normalizedName: cleanedPending,
+            let hasDistinctProdName = !isWeightLine && !isPureMetadataOrHeader(namePartInLine) && (
+                !prodTokens.isEmpty ||
+                classifiedRole == .productLine ||
+                namePartInLine.count >= 4
+            )
+
+            // Çoklu Ürün Ayrıştırma (Eğik Fişlerde Poşet 1 TL ve Lezita Ayrımı):
+            // Eğer yığında bekleyen bir poşet varsa ve bu satırda yeni bir ürün ve poşet fiyatı (<= 1.00 TL) varsa:
+            let bufferHasUnpricedBag = itemBuffer.contains { item in
+                let u = item.text.uppercased()
+                return (u.contains("POSET") || u.contains("POŞET")) && item.rightmostPrice == nil
+            }
+
+            if bufferHasUnpricedBag && hasDistinctProdName && lineTotal != nil, let p = lineTotal?.0, p <= Decimal(1.00) {
+                if let idx = itemBuffer.firstIndex(where: { item in
+                    let u = item.text.uppercased()
+                    return (u.contains("POSET") || u.contains("POŞET")) && item.rightmostPrice == nil
+                }) {
+                    let unpricedCandidate = itemBuffer.remove(at: idx)
+                    let cleanedName = TurkishProductNameCleaner.clean(rawName: unpricedCandidate.text)
+                    let item = ParsedItemDTO(
+                        rawName: unpricedCandidate.text,
+                        normalizedName: cleanedName,
                         quantity: 1,
                         unit: .piece,
-                        unitPrice: price,
-                        totalPrice: price,
-                        taxRate: parseTaxRate(from: pending),
-                        confidenceScore: Double(calculateConfidence(boxes: pendingItemBoxes)),
-                        boundingBox: computeNormalizedRect(boxes: pendingItemBoxes, imageSize: imageSize)
+                        unitPrice: p,
+                        totalPrice: p,
+                        taxRate: parseTaxRate(from: unpricedCandidate.text),
+                        confidenceScore: Double(calculateConfidence(boxes: unpricedCandidate.line.words)),
+                        boundingBox: computeNormalizedRect(boxes: unpricedCandidate.line.words, imageSize: imageSize)
                     )
-                    lineItems.append(pendingItem)
-                    auditLog.append("\(lineLog) -> [BEKLEYEN ÜRÜN KAPATILDI] \"\(cleanedPending)\": \(price) TL")
-
-                    pendingItemName = namePartInLine
-                    pendingItemBoxes = line.words.filter { $0.boundingBox.maxX <= priceBox.boundingBox.minX + 5 }
-                    continue
+                    lineItems.append(item)
+                    auditLog.append("\(lineLog) -> [BEKLEYEN POŞET KAPATILDI] \"\(cleanedName)\": \(p) TL")
                 }
 
-                var rawItemName: String
-                let allBoxes: [OCRWordBox]
-
-                if let pending = pendingItemName {
-                    rawItemName = pending + " " + namePartInLine
-                    allBoxes = pendingItemBoxes + line.words
-                    pendingItemName = nil
-                    pendingItemBoxes = []
-                } else {
-                    rawItemName = namePartInLine
-                    allBoxes = line.words
-                }
-
-                if !prodTokens.isEmpty {
-                    let taggedName = prodTokens.map(\.token).joined(separator: " ")
-                    if taggedName.count >= 3 {
-                        rawItemName = taggedName
-                    }
-                }
-
-                let trimmedItemName = rawItemName.trimmingCharacters(in: .whitespacesAndNewlines)
-                guard !trimmedItemName.isEmpty, !isPureMetadataOrHeader(trimmedItemName) else {
-                    auditLog.append("\(lineLog) -> [ATLANDI: Boş veya Başlık Ürünü]")
-                    continue
-                }
-
-                let cleanedName = TurkishProductNameCleaner.clean(rawName: trimmedItemName)
-                let taxRate = parseTaxRate(from: lineText)
-                let lineConfidence = calculateConfidence(boxes: allBoxes)
-                let normRect = computeNormalizedRect(boxes: allBoxes, imageSize: imageSize)
-
-                let qty: Decimal
-                let unit: UnitType
-                let uPrice: Decimal
-
-                if let sub = pendingSubline {
-                    qty = sub.quantity
-                    unit = sub.unit
-                    uPrice = sub.unitPrice
-                    pendingSubline = nil
-                } else {
-                    qty = Decimal(1.0)
-                    unit = .piece
-                    uPrice = price
-                }
-
-                let item = ParsedItemDTO(
-                    rawName: trimmedItemName,
-                    normalizedName: cleanedName,
-                    quantity: qty,
-                    unit: unit,
-                    unitPrice: uPrice,
-                    totalPrice: price,
-                    taxRate: taxRate,
-                    confidenceScore: Double(lineConfidence),
-                    boundingBox: normRect
+                let currentItemLine = CandidateItemLine(
+                    line: line,
+                    text: lineText,
+                    role: classifiedRole,
+                    rawTag: rawMLTag,
+                    tokens: tokensForLine,
+                    rightmostPrice: nil,
+                    quantityInfo: qInfo,
+                    lineLog: lineLog
                 )
-                lineItems.append(item)
-                auditLog.append("\(lineLog) -> [ÜRÜN EKLENDİ] \"\(cleanedName)\": \(price) TL (\(qty) \(unit.rawValue))")
+                itemBuffer.append(currentItemLine)
+                continue
+            }
+
+            let candidateLine = CandidateItemLine(
+                line: line,
+                text: lineText,
+                role: classifiedRole,
+                rawTag: rawMLTag,
+                tokens: tokensForLine,
+                rightmostPrice: lineTotal,
+                quantityInfo: qInfo,
+                lineLog: lineLog
+            )
+            itemBuffer.append(candidateLine)
+
+            // FLUSH KONTROLÜ:
+            // Yığında fiyat var mı ve ürün adı var mı?
+            let hasPriceInBuffer = itemBuffer.contains { $0.rightmostPrice != nil }
+            let hasNameInBuffer = itemBuffer.contains { item in
+                item.quantityInfo == nil && !self.isPureMetadataOrHeader(item.text) && item.text.count >= 3
+            }
+
+            if hasPriceInBuffer && (hasNameInBuffer || itemBuffer.count >= 3) {
+                flushItemBuffer(
+                    buffer: &itemBuffer,
+                    lineItems: &lineItems,
+                    imageSize: imageSize,
+                    auditLog: &auditLog
+                )
             } else {
-                // Fiyatsız satır: Ya ürün adıdır ya da Akış B'nin bekleyen tartı satırına isim sağlamaktadır
-                if classifiedRole == .productLine || isLikelyItemName(lineText) {
-                    var candidateName = lineText
-                    let prodTokens = tokensForLine.filter { $0.label == "PROD_NAME" }
-                    if !prodTokens.isEmpty {
-                        candidateName = prodTokens.map(\.token).joined(separator: " ")
-                    }
-
-                    if let sub = pendingSubline {
-                        let combinedBoxes = sub.words + line.words
-                        let cleanedName = TurkishProductNameCleaner.clean(rawName: candidateName)
-                        let dynConfidence = Double(calculateConfidence(boxes: combinedBoxes))
-                        let normRect = computeNormalizedRect(boxes: combinedBoxes, imageSize: imageSize)
-                        let itemTotal = sub.lineTotal ?? (sub.quantity * sub.unitPrice)
-
-                        let item = ParsedItemDTO(
-                            rawName: candidateName,
-                            normalizedName: cleanedName,
-                            quantity: sub.quantity,
-                            unit: sub.unit,
-                            unitPrice: sub.unitPrice,
-                            totalPrice: itemTotal,
-                            taxRate: parseTaxRate(from: lineText),
-                            confidenceScore: dynConfidence,
-                            boundingBox: normRect
-                        )
-                        lineItems.append(item)
-                        auditLog.append("\(lineLog) -> [ÜRÜN TAMAMLANDI - Akış B] \"\(cleanedName)\": \(itemTotal) TL (\(sub.quantity) \(sub.unit.rawValue) x \(sub.unitPrice))")
-                        pendingSubline = nil
-                        pendingItemName = nil
-                        pendingItemBoxes = []
-                    } else {
-                        if let pending = pendingItemName {
-                            pendingItemName = pending + " " + candidateName
-                            pendingItemBoxes.append(contentsOf: line.words)
-                        } else {
-                            pendingItemName = candidateName
-                            pendingItemBoxes = line.words
-                        }
-                        auditLog.append("\(lineLog) -> [ÜRÜN ADI BEKLEMEDE] \"\(candidateName)\"")
-                    }
-                } else {
-                    auditLog.append("\(lineLog) -> [İŞLENMEDİ / ATLANDI]")
-                }
+                auditLog.append("\(lineLog) -> [ÜRÜN BAĞLAMI BİRİKTİRİLİYOR (Yığın: \(itemBuffer.count))]")
             }
         }
+
+        // Yığında kalan son bir ürün varsa (örn. fişin son kalemi olup toplamdan önce flush edilmediyse)
+        flushOrClearBuffer(buffer: &itemBuffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
 
         // Aritmetik Çapraz Doğrulama ve Dinamik Güven Skoru
         let calculatedSum = lineItems.reduce(Decimal(0)) { $0 + $1.totalPrice }
@@ -549,6 +453,145 @@ public final class TurkishReceiptParserEngine: Sendable {
         )
     }
 
+    // MARK: - Yığın Çözümleme ve Sentezleme Metotları
+
+    private func flushOrClearBuffer(
+        buffer: inout [CandidateItemLine],
+        lineItems: inout [ParsedItemDTO],
+        imageSize: CGSize,
+        auditLog: inout [String]
+    ) {
+        if buffer.contains(where: { $0.rightmostPrice != nil }) {
+            flushItemBuffer(buffer: &buffer, lineItems: &lineItems, imageSize: imageSize, auditLog: &auditLog)
+        } else {
+            buffer.removeAll()
+        }
+    }
+
+    private func flushItemBuffer(
+        buffer: inout [CandidateItemLine],
+        lineItems: inout [ParsedItemDTO],
+        imageSize: CGSize,
+        auditLog: inout [String]
+    ) {
+        guard !buffer.isEmpty else { return }
+        defer { buffer.removeAll() }
+
+        // 1. Fiyatı tespit et (Buffer içindeki en son / en sağdaki fiyatlı satır)
+        guard let pricedLine = buffer.reversed().first(where: { $0.rightmostPrice != nil }),
+              let (totalPrice, priceBox) = pricedLine.rightmostPrice else {
+            return
+        }
+
+        // 2. Tartı / Miktar bilgisini topla (Buffer içindeki herhangi bir tartı satırından)
+        var quantity: Decimal = Decimal(1.0)
+        var unit: UnitType = .piece
+        var unitPrice: Decimal = totalPrice
+
+        if let qLine = buffer.first(where: { $0.quantityInfo != nil }),
+           let q = qLine.quantityInfo {
+            quantity = q.qty
+            unit = q.unit
+            if let up = q.unitPrice {
+                let calculatedTotal = q.qty * up
+                if abs(calculatedTotal - totalPrice) <= 0.10 {
+                    unitPrice = up
+                } else if q.qty > 0 {
+                    unitPrice = roundDecimal(totalPrice / q.qty, scale: 2)
+                } else {
+                    unitPrice = up
+                }
+            } else if q.qty > 0 {
+                unitPrice = roundDecimal(totalPrice / q.qty, scale: 2)
+            }
+        }
+
+        // 3. Ürün adını topla
+        var nameParts: [String] = []
+        var allBoxes: [OCRWordBox] = []
+
+        for item in buffer {
+            allBoxes.append(contentsOf: item.line.words)
+
+            // Saf tartı satırıysa ürün adı olarak kelimelerini ekleme
+            let isPureWeight = item.quantityInfo != nil && (
+                item.role == .weightQtyPrice ||
+                item.text.range(of: #"(?i)\b(?:kg|kilo|gr|gram|adet|ad|lt|litre)\s*[xX*]"#, options: .regularExpression) != nil
+            )
+            if isPureWeight {
+                continue
+            }
+
+            // ML Tagger PROD_NAME tokenları varsa öncelikli al
+            let prodTokens = item.tokens.filter { $0.label == "PROD_NAME" }
+            if !prodTokens.isEmpty {
+                let tagged = prodTokens.map(\.token).joined(separator: " ")
+                if tagged.count >= 3 {
+                    nameParts.append(tagged)
+                    continue
+                }
+            }
+
+            // Yoksa fiyat kutusundan önceki kelimeleri al (veya fiyatsız satırsa tüm kelimeleri)
+            let wordsForName: [OCRWordBox]
+            if item.line.words.contains(where: { $0.boundingBox == priceBox.boundingBox }) {
+                wordsForName = item.line.words.filter { $0.boundingBox.maxX <= priceBox.boundingBox.minX + 5 }
+            } else {
+                wordsForName = item.line.words
+            }
+
+            let text = wordsForName.map(\.text).joined(separator: " ").trimmingCharacters(in: .whitespacesAndNewlines)
+            if !text.isEmpty && !isPureMetadataOrHeader(text) {
+                nameParts.append(text)
+            }
+        }
+
+        var rawName = nameParts.joined(separator: " ").trimmingCharacters(in: .whitespacesAndNewlines)
+        if rawName.isEmpty {
+            let fallbackWords = pricedLine.line.words.filter { $0.boundingBox.maxX <= priceBox.boundingBox.minX + 5 }
+            rawName = fallbackWords.map(\.text).joined(separator: " ").trimmingCharacters(in: .whitespacesAndNewlines)
+            if rawName.isEmpty {
+                return
+            }
+        }
+
+        // KDV oranını tespit et
+        var taxRate = Decimal(sign: .plus, exponent: -2, significand: 1) // default %1
+        for item in buffer {
+            let tr = parseTaxRate(from: item.text)
+            if tr != Decimal(sign: .plus, exponent: -2, significand: 1) {
+                taxRate = tr
+                break
+            }
+        }
+
+        let cleanedName = TurkishProductNameCleaner.clean(rawName: rawName)
+        let lineConfidence = calculateConfidence(boxes: allBoxes)
+        let normRect = computeNormalizedRect(boxes: allBoxes, imageSize: imageSize)
+
+        let parsed = ParsedItemDTO(
+            rawName: rawName,
+            normalizedName: cleanedName,
+            quantity: quantity,
+            unit: unit,
+            unitPrice: unitPrice,
+            totalPrice: totalPrice,
+            taxRate: taxRate,
+            confidenceScore: Double(lineConfidence),
+            boundingBox: normRect
+        )
+
+        lineItems.append(parsed)
+        auditLog.append("\(buffer.first?.lineLog ?? "") -> [YIĞIN SENTEZİ -> ÜRÜN EKLENDİ] \"\(cleanedName)\": \(totalPrice) TL (\(quantity) \(unit.rawValue) x \(unitPrice) TL)")
+    }
+
+    private func roundDecimal(_ value: Decimal, scale: Int = 2) -> Decimal {
+        var val = value
+        var rounded = Decimal()
+        NSDecimalRound(&rounded, &val, scale, .plain)
+        return rounded
+    }
+
     // MARK: - Yardımcı Metotlar
 
     private func isGrandTotalMatch(_ text: String) -> Bool {
@@ -607,7 +650,7 @@ public final class TurkishReceiptParserEngine: Sendable {
         }
 
         // 3. Tablo satırı: örn. "%1 286.14 *2.86 *289.00" veya "21 - 286.14 *2.86 *289.00"
-        if text.range(of: #"^[%\·\d]{1,3}\s*[-–]?\s*\d+[\.,]\d{2}\s+\*?\d+[\.,]\d{2}"#, options: .regularExpression) != nil {
+        if text.range(of: #"^[%·\d]{1,3}\s*[-–]?\s*\d+[\.,]\d{2}\s+\*?\d+[\.,]\d{2}"#, options: .regularExpression) != nil {
             return true
         }
 
@@ -629,6 +672,7 @@ public final class TurkishReceiptParserEngine: Sendable {
 
     private func isPureMetadataOrHeader(_ text: String) -> Bool {
         let upper = text.uppercased()
+        if text.range(of: #"^\d+$"#, options: .regularExpression) != nil { return true }
         if text.range(of: ReceiptRegexLibrary.datePattern, options: .regularExpression) != nil { return true }
         if text.range(of: ReceiptRegexLibrary.receiptNoPattern, options: .regularExpression) != nil { return true }
         if text.range(of: ReceiptRegexLibrary.vknPattern, options: .regularExpression) != nil { return true }
@@ -744,21 +788,21 @@ public final class TurkishReceiptParserEngine: Sendable {
     }
 
     private func isQuantitySubline(_ text: String) -> Bool {
-        text.range(of: ReceiptRegexLibrary.quantityUnitPattern, options: .regularExpression) != nil
+        let pattern = #"(?i)(\d+[.,]?\d*)\s*(KG|KİLO|KILO|GR|G|GRAM|ADET|AD|LT|L|LİTRE|LITRE|PK|PAKET)\s*[xX*]"#
+        return text.range(of: pattern, options: .regularExpression) != nil
     }
 
-    private func parseQuantitySubline(_ text: String) -> (Decimal, UnitType, Decimal)? {
-        let cleaned = text.replacingOccurrences(of: "*", with: "")
-        guard let regex = try? NSRegularExpression(pattern: ReceiptRegexLibrary.quantityUnitPattern) else { return nil }
-        guard let match = regex.firstMatch(in: cleaned, range: NSRange(cleaned.startIndex..., in: cleaned)) else { return nil }
+    private func parseQuantitySubline(_ text: String) -> (qty: Decimal, unit: UnitType, unitPrice: Decimal?)? {
+        let pattern = #"(?i)(\d+[.,]?\d*)\s*(KG|KİLO|KILO|GR|G|GRAM|ADET|AD|LT|L|LİTRE|LITRE|PK|PAKET)\s*[xX*]"#
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return nil }
+        guard let match = regex.firstMatch(in: text, range: NSRange(text.startIndex..., in: text)) else { return nil }
 
-        let nsCleaned = cleaned as NSString
-        guard let qty = CurrencyNormalizer.parseQuantity(from: nsCleaned.substring(with: match.range(at: 1))),
-              let price = CurrencyNormalizer.parseDecimal(from: nsCleaned.substring(with: match.range(at: 3))) else {
+        let nsText = text as NSString
+        guard let qty = CurrencyNormalizer.parseQuantity(from: nsText.substring(with: match.range(at: 1))) else {
             return nil
         }
 
-        let rawUnit = nsCleaned.substring(with: match.range(at: 2)).uppercased()
+        let rawUnit = nsText.substring(with: match.range(at: 2)).uppercased()
         let unit: UnitType
         switch rawUnit {
         case "KG", "KİLO", "KILO": unit = .kilogram
@@ -770,7 +814,13 @@ public final class TurkishReceiptParserEngine: Sendable {
         default: unit = .piece
         }
 
-        return (qty, unit, price)
+        let afterMatch = nsText.substring(from: match.range.location + match.range.length).trimmingCharacters(in: .whitespaces)
+        var unitPrice: Decimal?
+        if let priceMatch = evaluateRegex(pattern: #"(\d{1,4}(?:[.,]\d{3})*[.,]\d{1,2})"#, text: afterMatch) {
+            unitPrice = CurrencyNormalizer.parseDecimal(from: priceMatch)
+        }
+
+        return (qty, unit, unitPrice)
     }
 
     private func parseTaxRate(from text: String) -> Decimal {
@@ -868,10 +918,13 @@ public final class TurkishReceiptParserEngine: Sendable {
     }
 }
 
-private struct PendingSubline: Sendable {
-    let quantity: Decimal
-    let unit: UnitType
-    let unitPrice: Decimal
-    let lineTotal: Decimal?
-    let words: [OCRWordBox]
+private struct CandidateItemLine: Sendable {
+    let line: SegmentedReceiptLine
+    let text: String
+    let role: ReceiptLineRole
+    let rawTag: String
+    let tokens: [TaggedTokenResult]
+    let rightmostPrice: (price: Decimal, wordBox: OCRWordBox)?
+    let quantityInfo: (qty: Decimal, unit: UnitType, unitPrice: Decimal?)?
+    let lineLog: String
 }

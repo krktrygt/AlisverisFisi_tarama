@@ -28,8 +28,8 @@ public struct ReceiptRegexLibrary {
     // KDV Oranı: *01, *1, %10, %20, *08, *18, %1.
     public static let vatRatePattern = #"(?i)(?:[*%]|KDV\s*[%*]?)\s*(0?1|0?8|10|18|20)\b"#
 
-    // Miktar ve Birim: 1,250 kg x 45,00, 3 ADET * 12,50 TL, 0.462 kg X 1,390.00
-    public static let quantityUnitPattern = #"(?i)(\d+[\.,]?\d*)\s*(KG|GR|G|ADET|AD|LT|L|PK|PAKET)\s*[xX\*]\s*(\d{1,4}(?:[\.,]\d{3})*[\.,]\d{2})"#
+    // Miktar ve Birim: 1,250 kg x 45,00, 3 ADET * 12,50 TL, 0.462 kg X 1,390.00, 0.85 kg X 89.90
+    public static let quantityUnitPattern = #"(?i)(\d+[\.,]?\d*)\s*(KG|KİLO|KILO|GR|G|GRAM|ADET|AD|LT|L|LİTRE|LITRE|PK|PAKET)\s*[xX\*]\s*(\d{1,4}(?:[\.,]\d{3})*[\.,]\d{1,2})"#
 
     // Toplam ve Ara Toplam
     // "TOPLAM", "GENEL TOPLAM", "ODENECEK KDV DAHIL TUTAR", "ÖDENECEK TUTAR"
@@ -38,15 +38,14 @@ public struct ReceiptRegexLibrary {
     public static let totalVatPattern = #"(?i)(?:TOP(?:LAM)?\s*KDV|KDV\s*TOPLAM)\s*[:\.]?\s*[*]?\s*(\d{1,4}(?:[\.,]\d{3})*[\.,]\d{2})"#
 
     // İndirimler
-    public static let discountKeywordPattern = #"(?i)(?:[İI]ND[İI]R[İI]M|KAMPANYA|MONEY|W[İI]N|ISKONTO|TENZ[İI]LAT)"#
-    public static let negativeAmountPattern = #"(?i)(?:-\s*|\(\s*)(\d{1,4}(?:[\.,]\d{3})*[\.,]\d{2})\s*\)?"#
+    public static let discountKeywordPattern = #"(?i)\b(IND|İND|INDIRIM|İNDİRİM|ISKONTO|PROMOSYON)\b"#
 
-    // Ödeme Yöntemi
-    public static let paymentMethodPattern = #"(?i)\b(NAK[İI]T|KRED[İI]\s*KARTI?|BANKA\s*KARTI?|TEMASSIZ|HED[İI]YE\s*ÇEK[İI]|YEMEK\s*KARTI?|SODEXO|MULTINET|TICKET|IPPOS)\b"#
+    // Ödeme Tipleri
+    public static let paymentMethodPattern = #"(?i)\b(NAK[İI]T|KRED[İI]\s*KARTI|BANKA\s*KARTI|IPPOS|TEMASSIZ|TROY|VISA|MASTERCARD)\b"#
 
-    // Üstbilgi / Fatura / Kurumsal Başlık Satırları Deseni
-    public static let headerMetadataPattern = #"(?i)(?:E-AR[SŞ][İI]V|E-FATURA|E-ARALU|E-FRALV|FATURA\s*NO|VERG[İI]\s*DA[İI]RES[İI]|VDM|TICARET\s*SICIL|MERSIS|MERS[İI]S|TCKN|VKN|ETTN|MAH\.|CAD\.|NO\s*:\s*\d|TALAS|KAYSER[İI]|SARIGAZ[İI]|SAR[İI]GAZ[İI]|N[İI]HA[İI]\s*T[ÜU]KET[İI]C[İI]|SIRA\s*NO)"#
+    // Üstbilgi ve Belge Meta Desenleri
+    public static let headerMetadataPattern = #"(?i)\b(E-AR[SŞ][Iİ]V|FATURA|BILGI\s*FISI|BİLGİ\s*FİŞİ|YENI\s*NESIL|ÖKC|OKC|KASİYER|KASIYER|SICIL|MERSIS|MERSİS)\b"#
 
-    // Altbilgi / Fiş Kapanış / Stop Sentinel Deseni (Ürün taramasını kesin olarak durduran anahtar kelimeler)
-    public static let receiptFooterSentinelPattern = #"(?i)(?:TOPLAM\s*KDV|[ÖO]DENECEK|KRED[İI]\s*KARTI?|IPPOS|IS\s*BANKASI|[İI]Ş\s*BANKASI|ONAY\s*NO|REF\s*\.?\s*NO|MATRAH|KDV\s*TUTAR|KDV\s*DAH[İI]L|ATRC|FOS\s*:|POS\s*:|B\s*:\s*\d+\s+S\s*:|TERMINAL|G[ÜU]LE\s*G[ÜU]LE)"#
+    // Fiş Sonu / Sentinel Desenleri
+    public static let receiptFooterSentinelPattern = #"(?i)\b(TEŞEKKÜR\s*EDER[Iİ]Z|TESEKKUR\s*EDERIZ|YINE\s*BEKLERIZ|YİNE\s*BEKLERİZ|GÜLE\s*GÜLE\s*KULLANIN|MALI\s*DEĞERİ\s*YOKTUR|MALİ\s*DEGERI\s*YOKTUR|BİLGİ\s*İÇİNDİR)\b"#
 }

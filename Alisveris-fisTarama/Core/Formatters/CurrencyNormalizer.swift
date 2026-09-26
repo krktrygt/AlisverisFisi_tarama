@@ -51,8 +51,11 @@ public enum TurkishCurrencyNormalizer: Sendable {
     }
 
     public static func parseQuantity(from rawText: String) -> Decimal? {
-        let cleaned = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
+        var cleaned = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: ",", with: ".")
+        while let last = cleaned.last, !last.isNumber && last != "." {
+            cleaned.removeLast()
+        }
         return Decimal(string: cleaned, locale: Locale(identifier: "en_US"))
     }
 
@@ -92,6 +95,14 @@ public enum TurkishCurrencyNormalizer: Sendable {
             .replacingOccurrences(of: "B", with: "8")
             .replacingOccurrences(of: "'", with: ",")
             .replacingOccurrences(of: "`", with: ",")
+
+        // Sondaki ve baştaki OCR parazit harfleri (örn. 89.9îŚ -> 89.9) temizle
+        while let last = cleaned.last, !last.isNumber && last != "." && last != "," {
+            cleaned.removeLast()
+        }
+        while let first = cleaned.first, !first.isNumber && first != "." && first != "," && first != "-" {
+            cleaned.removeFirst()
+        }
 
         // Türk Lirası noktalama standardizasyonu
         if cleaned.contains(",") && cleaned.contains(".") {
