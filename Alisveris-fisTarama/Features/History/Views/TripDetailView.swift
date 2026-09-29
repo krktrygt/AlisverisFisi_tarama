@@ -66,12 +66,23 @@ public struct TripDetailView: View {
             Section(header: Text("Ürünler (\(trip.items.count))")) {
                 ForEach(trip.items) { item in
                     HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(item.rawName)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(item.normalizedName.isEmpty ? item.rawName : item.normalizedName)
                                 .font(.body)
-                            Text("\(CurrencyNormalizer.format(item.quantity)) \(item.unit.localizedTitle)")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                            HStack(spacing: 6) {
+                                Text("\(CurrencyNormalizer.format(item.quantity)) \(item.unit.localizedTitle)")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                if let catEmoji = item.categoryEmoji ?? item.category?.emoji,
+                                   let catName = item.categoryName ?? item.category?.name {
+                                    Text("\(catEmoji) \(catName)")
+                                        .font(.caption2)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(Color(.secondarySystemBackground))
+                                        .clipShape(Capsule())
+                                }
+                            }
                         }
                         Spacer()
                         Text(item.totalPrice.formattedAsCurrency())

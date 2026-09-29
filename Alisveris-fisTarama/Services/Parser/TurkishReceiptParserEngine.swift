@@ -330,6 +330,7 @@ public final class TurkishReceiptParserEngine: Sendable {
                     let cleanedResult = TurkishProductNameCleaner.cleanAndExtractDetails(rawName: unpricedCandidate.text)
                     let cleanedName = cleanedResult.cleanName
                     let bagTax = cleanedResult.detectedTaxRate ?? parseTaxRate(from: unpricedCandidate.text)
+                    let catPred = mlService?.predictCategory(for: cleanedName)
                     let item = ParsedItemDTO(
                         rawName: unpricedCandidate.text,
                         normalizedName: cleanedName,
@@ -342,7 +343,10 @@ public final class TurkishReceiptParserEngine: Sendable {
                         boundingBox: computeNormalizedRect(boxes: unpricedCandidate.line.words, imageSize: imageSize),
                         packageQuantity: cleanedResult.packageQuantity,
                         packageUnit: cleanedResult.packageUnit,
-                        packCount: cleanedResult.packCount
+                        packCount: cleanedResult.packCount,
+                        categoryRawCode: catPred?.rawCode,
+                        categoryName: catPred?.category.displayName,
+                        categoryEmoji: catPred?.category.emoji
                     )
                     lineItems.append(item)
                     auditLog.append("\(lineLog) -> [BEKLEYEN POŞET KAPATILDI] \"\(cleanedName)\": \(p) TL")
@@ -578,6 +582,7 @@ public final class TurkishReceiptParserEngine: Sendable {
         let lineConfidence = calculateConfidence(boxes: allBoxes)
         let normRect = computeNormalizedRect(boxes: allBoxes, imageSize: imageSize)
 
+        let catPred = mlService?.predictCategory(for: cleanedName)
         let parsed = ParsedItemDTO(
             rawName: rawName,
             normalizedName: cleanedName,
@@ -590,7 +595,10 @@ public final class TurkishReceiptParserEngine: Sendable {
             boundingBox: normRect,
             packageQuantity: cleanedResult.packageQuantity,
             packageUnit: cleanedResult.packageUnit,
-            packCount: cleanedResult.packCount
+            packCount: cleanedResult.packCount,
+            categoryRawCode: catPred?.rawCode,
+            categoryName: catPred?.category.displayName,
+            categoryEmoji: catPred?.category.emoji
         )
 
         lineItems.append(parsed)

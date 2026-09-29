@@ -92,6 +92,14 @@ public final class ReviewCorrectionViewModel {
         saveDraftSnapshot()
     }
 
+    public func updateItemCategory(at index: Int, standardCategory: StandardCategory) {
+        guard receiptDTO.items.indices.contains(index) else { return }
+        receiptDTO.items[index].categoryRawCode = standardCategory.rawCode
+        receiptDTO.items[index].categoryName = standardCategory.displayName
+        receiptDTO.items[index].categoryEmoji = standardCategory.emoji
+        saveDraftSnapshot()
+    }
+
     public func updateItemPrice(at index: Int, newPrice: Decimal) {
         guard receiptDTO.items.indices.contains(index) else { return }
         receiptDTO.items[index].totalPrice = newPrice

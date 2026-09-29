@@ -45,7 +45,8 @@ public struct ReviewCorrectionView: View {
                                 isSelected: viewModel.activeItemIndex == index,
                                 onTap: { viewModel.selectItem(at: index) },
                                 onNameChange: { newName in viewModel.updateItemName(at: index, newName: newName) },
-                                onPriceChange: { newPrice in viewModel.updateItemPrice(at: index, newPrice: newPrice) }
+                                onPriceChange: { newPrice in viewModel.updateItemPrice(at: index, newPrice: newPrice) },
+                                onCategoryChange: { newCat in viewModel.updateItemCategory(at: index, standardCategory: newCat) }
                             )
                             .swipeActions(edge: .trailing) {
                                 Button(role: .destructive) {
@@ -116,6 +117,7 @@ private struct ItemRowView: View {
     let onTap: () -> Void
     let onNameChange: (String) -> Void
     let onPriceChange: (Decimal) -> Void
+    let onCategoryChange: (StandardCategory) -> Void
 
     @State private var editedName: String = ""
     @State private var editedPrice: String = ""
@@ -150,14 +152,40 @@ private struct ItemRowView: View {
                 }
                 .buttonStyle(.plain)
             } else {
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(item.normalizedName)
                         .font(.body)
                         .fontWeight(isSelected ? .semibold : .regular)
 
-                    Text("\(CurrencyNormalizer.format(item.quantity)) \(item.unit.localizedTitle)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    HStack(spacing: 6) {
+                        Text("\(CurrencyNormalizer.format(item.quantity)) \(item.unit.localizedTitle)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Menu {
+                            ForEach(StandardCategory.allCases, id: \.self) { cat in
+                                Button {
+                                    onCategoryChange(cat)
+                                } label: {
+                                    Label("\(cat.emoji) \(cat.displayName)", systemImage: cat.iconName)
+                                }
+                            }
+                        } label: {
+                            HStack(spacing: 3) {
+                                Text(item.categoryEmoji ?? "🛍️")
+                                Text(item.categoryName ?? "Kategori")
+                                    .font(.caption2)
+                                    .lineLimit(1)
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .font(.system(size: 8))
+                            }
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color(.secondarySystemBackground))
+                            .clipShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
 
                 Spacer()

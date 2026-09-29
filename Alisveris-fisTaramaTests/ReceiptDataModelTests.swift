@@ -27,6 +27,34 @@ struct ReceiptDataModelTests {
         return try ModelContainer(for: schema, configurations: [configuration])
     }
 
+    @Test func testCategoryClassificationAndSeeding() throws {
+        let container = try makeInMemoryContainer()
+        AppContainer.seedStandardCategories(in: container)
+
+        let context = container.mainContext
+        let categories = try context.fetch(FetchDescriptor<Category>())
+        #expect(categories.count == 20)
+
+        // CoreML Model Çıkarım Doğrulaması
+        let mlService = ReceiptMLInferenceService()
+        
+        let sut = mlService.predictCategory(for: "DOST SÜT")
+        #expect(sut.category == .dairyBreakfast)
+        #expect(sut.rawCode == "DAIRY_BREAKFAST")
+
+        let sucuk = mlService.predictCategory(for: "HARRAS KASAP SUCUK")
+        #expect(sucuk.category == .meatPoultry)
+
+        let domates = mlService.predictCategory(for: "DOMATES")
+        #expect(domates.category == .produce)
+
+        let deterjan = mlService.predictCategory(for: "ARIEL TOZ DETERJAN")
+        #expect(deterjan.category == .cleaningHousehold)
+
+        let poset = mlService.predictCategory(for: "ALIŞVERİŞ POŞETİ")
+        #expect(poset.category == .otherNonFood)
+    }
+
     @Test func testModelPersistenceAndRelationships() throws {
         let container = try makeInMemoryContainer()
         let context = container.mainContext

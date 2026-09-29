@@ -76,20 +76,20 @@ public actor ReceiptPersistenceActor: ReceiptPersistenceServiceProtocol {
         context.insert(trip)
 
         // 4. ShoppingItem ve Denormalize PriceRecord Kayıtlarını Oluştur (N+1 Sorgu Engelleme)
-        let uniqueCategoryIds = Set(dto.items.compactMap(\.categoryId))
         var categoryLookup: [UUID: Category] = [:]
-        if !uniqueCategoryIds.isEmpty {
-            let catPredicate = #Predicate<Category> { c in
-                uniqueCategoryIds.contains(c.id)
-            }
-            let matchedCategories = try context.fetch(FetchDescriptor<Category>(predicate: catPredicate))
-            for cat in matchedCategories {
+        var categoryCodeLookup: [String: Category] = [:]
+        if let allCategories = try? context.fetch(FetchDescriptor<Category>()) {
+            for cat in allCategories {
                 categoryLookup[cat.id] = cat
+                if let code = cat.rawCode {
+                    categoryCodeLookup[code] = cat
+                }
             }
         }
 
         for itemDTO in dto.items {
             let resolvedCategory = itemDTO.categoryId.flatMap { categoryLookup[$0] }
+                ?? itemDTO.categoryRawCode.flatMap { categoryCodeLookup[$0] }
 
             let item = ShoppingItem(
                 rawName: itemDTO.rawName,
@@ -104,7 +104,10 @@ public actor ReceiptPersistenceActor: ReceiptPersistenceServiceProtocol {
                 confidenceScore: itemDTO.confidenceScore,
                 packageQuantity: itemDTO.packageQuantity,
                 packageUnit: itemDTO.packageUnit,
-                packCount: itemDTO.packCount
+                packCount: itemDTO.packCount,
+                categoryRawCode: itemDTO.categoryRawCode ?? resolvedCategory?.rawCode,
+                categoryName: itemDTO.categoryName ?? resolvedCategory?.name,
+                categoryEmoji: itemDTO.categoryEmoji ?? resolvedCategory?.emoji
             )
             context.insert(item)
 

@@ -1,0 +1,2002 @@
+[
+  {
+    "text": "SGR.MARL",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "PRSTG SGR",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "WINSTON SLM",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "PARLMT KISA",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "KNT D-RNG",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "CAML YLW",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "HEETS BRNZ",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "TEREA AMBR",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "MARL RED KUTU SGR",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "WINST SLENDER BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "PARL NIGHT BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "CAMEL DEEP BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "KENT D-RANGE BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "LM RED LABEL SGR",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "HEETS AMBER SELECTION",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "TEREA SIENNA KARTON",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "INST TIK-TAK FILTRE 100LU",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "OCB ORGANIK SAR.KAG",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "MARLBORO TOUCH BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "WINSTON DARK BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "PARLIAMENT AQUA BLUE",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "CAPTAIN BLACK PURO",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "ADIYAMAN SARMA TUTUN 100G",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "GLO NEO GOLD TOBACCO",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "TEREA SILVER 20LI",
+    "label": "TOBACCO"
+  },
+  {
+    "text": "EFES KUTU",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "TUB.GLD 50CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "Y.RAKI 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "GLENLVT VISK",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "CHIVAS 12Y",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "BOMBAY CIN",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "BLKS.KOP SIZ",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "ABSOLT VOTK",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "EFES PILSEN 50CL KUTU",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "TUBORG GOLD SISE 50CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "YENI RAKI YENI SERI 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "TEKIRDAG RAKISI 50CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "J.WALKER RED LABEL 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "CHIVAS REGAL 12Y 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "ABSOLUT VOTKA 50CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "DOLUCA KLASIK BEYAZ 75CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "KAVAKLIDERE YAKUT 75CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "CARLSBERG BIRA KUTU 50CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "EFES EXTRA YUKSEK ALKOL 50CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "BOMBAY SAPPHIRE GIN 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "JACK DANIELS OLD NO7 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "CORONA CIZGILI BIRA 355ML",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "BEYLERBEYI GOBEK RAKISI 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "BUZBAG KLASIK KRMZ SARAP 75CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "SMIRNOFF RED VOTKA 70CL",
+    "label": "ALCOHOL"
+  },
+  {
+    "text": "DORTOS NACO",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "RUFFLS CADR",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "CIK.GOFR",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ULK.PROB",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "HARB ALT AYC",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ET.PUF HND",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "COKOPRNS",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "DANKK RLO",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "DORITOS NACHO CIPS 110G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "RUFFLES SAD.PAT.CIPS 107G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "LAYS MEVSIM YES. 107G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ULKER CIK.GOFRET 36G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ETI KARAM BITTER 60G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ETI BROWNIE INTENSE 50G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "HARIBO ALTIN AYICIK 80G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ETI PUF KAKAOLU 18G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "OREO KAKAOLU BISK 110G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "TOBLERONE SUTLU 100G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ULKER CIKOLATALI GOFRET 36G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ETI CIN PORTAKALLI 130G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "PRINGLES PAPRIKA 165G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "MILKA CILEKLI CIKOLATA 100G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "HARIBO JELIBON SOLUCAN 80G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "ETI CANGA YER FISTIKLI 45G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "TADELLE FINDIKLI BAR 52G",
+    "label": "JUNK_FOOD_SWEETS"
+  },
+  {
+    "text": "C-COLA ZRO",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "PEPS MAX 1L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "FRUKO GAZOZ",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "YEDIGN PORT",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "REDB ENR ICK",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "MNSTR ENERGY",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "LPTN SEFTAL",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "SCHWPP TNK",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "COCA COLA ZERO 1L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "PEPSI MAX KUTU 330ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "FANTA PORTAKAL 1.5L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "SPRITE GAZOZ 1L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "RED BULL ENERJI 250ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "MONSTER ENERGY 500ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "LIPTON ICETEA SEFT 1.5L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "FUSE TEA SEFTALI 1L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "BURN ENERJI ICECEGI 250ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "SCHWEPPES TONIK 250ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "COCA COLA ORIJINAL TAT 2.5L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "PEPSI KOLA KUTU 330ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "ULUDAG EFSANE GAZOZ 1L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "LIPTON ICE TEA SEFTALI 330ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "BEYOGLU ZENCEFILLI GAZOZ 250ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "RED BULL SUGARFREE 250ML",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "CAMLICA GAZOZ 1.5L",
+    "label": "CARBONATED_ENERGY_DRINKS"
+  },
+  {
+    "text": "DOM.SALK",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "PATAT.TZE",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "K.SOGAN",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "CARST.BIB",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "SALAT.KMG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "ELM.STRK",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "MUZ YERLI",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "MAYD.DMT",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "SALKIM DOMATES KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "TAZE PATATES CUVAL 2KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "KURU SOGAN DOKME KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "CARLISTON BIBER KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "KIVIRCIK MARUL ADET",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "CITIR SALATALIK KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "STARKING ELMA KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "ITHAL MUZ CHIQ KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "HAVUC PAKET 1KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "LIMON FILE 500G",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "DOMATES SALKIM",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "PATATES YEMEKLIK KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "KURU SOGAN FILE 1KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "GOLDEN ELMA",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "YERLI MUZ ALANYA KG",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "MAYDANOZ DEMET",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "GOBEK MARUL ADET",
+    "label": "PRODUCE"
+  },
+  {
+    "text": "D.KIYMA",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "D.KUSBAS",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "TAV.GOG",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "PL.BUT PIRZ",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "KNG.SCK",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "PIN.SOSIS",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "MAC.SALM",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "HND.FUME",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "DANA KIYMA YAGLI 500G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "DANA KUSBASI 500G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "CP TAV.GOGUS 1KG",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "BANVIT PILIC PIRZOLA KG",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "GEDIK PILIC BUT IZGARA KG",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "CUMHURIYET KNG SUCUK 250G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "SAHIN KANGAL SUCUK 200G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "PINAR SOSIS UZUN 10LU",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "PINAR AC-BITIR SALAM 60G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "POLONEZ HINDI FUME 150G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "DANA KIYMA 500G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "DANA KUSBASI 400G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "BANVIT BUT PIRZOLA",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "SAHIN EVLIK SUCUK 400G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "PINAR KOKTEYL SOSIS 200G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "NAMET DANA KANGAL SUCUK 250G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "UZMAN KASAP DANA KIYMA 400G",
+    "label": "MEAT_POULTRY"
+  },
+  {
+    "text": "TON.BAL",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DARD.TON",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "NORV.SMN",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "LEVRK FLT",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "CPR.BLG",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DOND.KRDS",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "KALAMR TAVA",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "HAMS.TZE",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DARDANEL TON 2X160G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "SUPERFRESH TON BALIGI 3X75G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DARDANEL AC BITIR TON 80G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "LERROS SOMON FILETO 250G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "KOCAMAN TEMIZL KARIDES 500G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "METRO LEVREK BALIK KG",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "KOCAMAN KALAMAR TAVA 500G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "SUPERFRESH MEZGIT FLT 500G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "TAZE SOMON DILIM KG",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DARDANEL MISIRLI TON 160G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DARDANEL TON BALIGI 160G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "SUPERFRESH TEMIZLENMIS HAMSI 500G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "NORVEC SOMON FILETO 300G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "TAZE CUPRA BALIK ADET",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "LEVREK BALIGI TEMIZLENMIS",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "DARDANEL ZEYTINYAGLI TON 2X160G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "KOCAMAN DONDURULMUS KARIDES 400G",
+    "label": "SEAFOOD"
+  },
+  {
+    "text": "SUZMEPEY",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "KASAR PEY",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "T.YAG.SUT",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "SUT.YOG",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "KMY.TEREY",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "LIO ZEYT",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "BALLIBAL",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "GEZ.TAV.YUM",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "PIN.SUZME PEY 500G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "SUTAS TAZ.KASAR 600G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "DOST T.YAGLI SUT 1L",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "BIRSAH YOGURT 3000G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "KEBIR KOY TEREYAGI 500G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "MARMARABIRLIK SYH ZYT 500G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "BALPARMAK CITAK BAL 460G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "SEKTOR 15LI YUMURTA M BOY",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "AKNAZ TAM YAGLI BEYAZ PEY 1KG",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "TORKU LABNE PEYNIRI 400G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "DOST YARIM YAGLI SUT 1L",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "SUTAS SUZME PEYNIR 500G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "PINAR BEYAZ TAZE PEYNIR 200G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "TORKU SUTLU TEREYAGI 1KG",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "MARMARABIRLIK KURU SELE ZEYTIN 400G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "BALPARMAK YAYLA SUZME BAL 460G",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "DOST KOY TIPI YOGURT 1.5KG",
+    "label": "DAIRY_BREAKFAST"
+  },
+  {
+    "text": "TST.EKM",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNO TOST",
+    "label": "BAKERY"
+  },
+  {
+    "text": "SM.EKMK",
+    "label": "BAKERY"
+  },
+  {
+    "text": "SOKK SIMIT",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNL.YUFKA",
+    "label": "BAKERY"
+  },
+  {
+    "text": "TORT.LAVAS",
+    "label": "BAKERY"
+  },
+  {
+    "text": "TAM BUG.EK",
+    "label": "BAKERY"
+  },
+  {
+    "text": "GRISIN.SD",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNO KEPEKLI TOST EKM 450G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "BIM SOMUN EKMEK 200G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "NIMET TANDIR LAVAS 10LU",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNO BUYUK SANDVIC 6LI 390G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "NIMET UCGEN YUFKA 360G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "DUMBU SIMIT ANKARA 2LI",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNO CIZIKLI POGACA 2LI",
+    "label": "BAKERY"
+  },
+  {
+    "text": "NIMET TOST EKMEGI 670G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "SUNNY TORTILLA LAVAS 25CM",
+    "label": "BAKERY"
+  },
+  {
+    "text": "BUYUK KORUNC EKMEK 500G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNO TAM BUGDAY TOST EKMEGI 350G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "NIMET YUFKA BOREKLIK 500G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "NIMET TAZE TOST EKMEGI 670G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "SOK SOKAK SIMITI 100G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "BAGET EKMEK 250G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "UNO KRUVASAN 50G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "KOCAMAN TANDIR EKMEGI 400G",
+    "label": "BAKERY"
+  },
+  {
+    "text": "A.SEHR",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "T.SEHR",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "DOM.SALC",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "AYC.YAG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "BLG.PILAV",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "BALD.PIRC",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "KRMZ.MRC",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "SIN.UN 1K",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "N.ANKARA A.SEHR 500G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "YUDUM AYC.YAG 5L",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "ONCU DOMATES SALCASI 830G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "EFSANE BALDO PIRINC 2.5KG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "SABAN KIRMIZI MERCIMEK 1KG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "SINANGIL BUGDAY UNU 2KG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "BARILLA SPAGETTI NO5 500G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "ONDER KAYA TUZU 750G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "BALKUPU TOZ SEKER 5KG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "YURDUM BIBER SALCASI 700G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "FILIZ BURGU MAKARNA 500G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "KOMILI RIVIERA ZEYTINYAGI 2L",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "OBA UN 5KG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "REIS KURU FASULYE 1KG",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "DOKTOR OETKER HAMUR KAB.TOZU 10LU",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "TAT DOMATES SALCASI 830G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "BILLUR TUZ IYOTLU 750G",
+    "label": "PANTRY_STAPLES"
+  },
+  {
+    "text": "D.SU 5L",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "MDN.SUY",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "BEYP.SODA",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "ALTNK.KFR",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "C.KUR TIRY",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "NESCAF 3N1",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "DOGS.K.CAY",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "TURK.KHV",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "SIRMA DOGAL SU 5L",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "BEYPAZARI MADEN SUYU 6X200ML",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "KIZILAY SADE SODA 6X200ML",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "KINIK ELMALI SODA 6X200ML",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "SUTAS BUYUK AYRAN 1L",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "ALTINKOY SADE KEFIR 1L",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "CAYKUR TIRYAKI CAY 1KG",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "DOGUS KARADENIZ DEMLIK 100LU",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "MEHMET EFENDI T.KAHVE 100G",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "NESCAFE GOLD EKONOMIK 100G",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "HAYAT SU 5L PET",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "ERIKLI DOGAL KAYNAK SUYU 1.5L",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "CAYKUR RIZE TURIST CAYI 1KG",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "SUTAS AYRAN 1.5L",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "MEHMET EFENDI TURK KAHVESI 100G",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "BEYPAZARI DOGAL MADEN SUYU 200ML",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "NESCAFE CLASSIC KAVANOZ 200G",
+    "label": "HEALTHY_BEVERAGES"
+  },
+  {
+    "text": "PRT.BAR",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "FLX.WHEY",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "GLTN.SZ UN",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "BADM.SUT",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "YLF.EZM",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "SUPR.VIT",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "KOLAJ.SOT",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "CHIA.TOH",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "HARDLINE WHEY 3MATRIX 908G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "FELLAS YUKSEK PROTEIN BAR 45G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "ZUBER SEKERSIZ MEYVE BAR 40G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "ALPRO BADEM SUTU 1L",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "NILKY YULAF SUTU SEKERSIZ 1L",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "ETI LIFALIF YULAF EZMESI 500G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "SCHAR GLUTENSIZ EKMEK 300G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "NATURES SUPREME OMEGA3 60KAP",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "VOONKA COLLAGEN SHOT 15X50ML",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "OCEAN BALIK YAGI SURUP 150ML",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "HARDLINE NUTRITION WHEY PROTEIN 1000G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "FELLAS PROTEIN BAR CIKOLATALI 45G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "ETI LIFALIF INCE OGUTULMUS YULAF 400G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "ALPRO SOYA SUTU ORIJINAL 1L",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "SUPRADYN ALL DAY 30 TABLET",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "SCHAR GLUTENSIZ PETIT BEURRE 165G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "ZUBER FINDIK KREMASI KAKAOLU 315G",
+    "label": "HEALTH_FITNESS"
+  },
+  {
+    "text": "B.BEZI",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "B.MNDL",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "DEV.SUT",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "APTML MAM",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "BEB.SAM",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "BEB.BISK",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "BBRN.EMZK",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "KAS.MAM",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "PRIMA AKTIF B.BEZ 4 62LI",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "SLEEPY NAT. CUKK B.BEZI 5 48LI",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "BEBELAND BEBEK BEZI MAXI 4 54LI",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "SLEEPY ISLAK BEBEK HAV 3X90",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "APTAMIL 2 DEVAM SUTU 800G",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "BEBELAC GOLD 3 MAMA 800G",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "HIPP ORGANIK KASIK MAMA 250G",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "CICIBEBE BISKUVI 1KG",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "DALIN BEBEK SAMPUANI 700ML",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "WEE BABY AKITMAZ BIBERON 250ML",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "PRIMA PREMIUM CARE BEBEK BEZI 3",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "SLEEPY SENSITIVE ISLAK HAVLU 90LI",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "BEBELAC COCUK DEVAM SUTU 4 400G",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "ETI CICIBEBE BEBEK BISKUVISI 1KG",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "DALIN GOZ YAKMAYAN BEBEK SAMPUANI 500ML",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "APTAMIL 1 BASLANGIC MUKEMMEL MAMA 400G",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "JOHNSONS BABY BEBEK YAGI 300ML",
+    "label": "BABY_CARE"
+  },
+  {
+    "text": "KED.MAM",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "KPK.MAM",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "KD.KUMU",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PROPL.STR",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "FELX.JLE",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PEDG.RUL",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "WHIS.PST",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "BNTC.KUM",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PRO PLAN STERILISED KEDI MAM 1.5KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "WHISKAS TAVUKLU KEDI MAMASI 1.4KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "FELIX JOLELI KONSERVE KEDI 85G",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PEDIGREE DANA ETLI KOPEK 4X100G",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "REFLEX YETISKIN KEDI MAMASI 3KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PRO LINE BENTONIT KEDI KUMU 10L",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "CATS WHITE TOPAKLASAN KUM 5L",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "DREAMIES KEDI ODUL MAMASI PEY 60G",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "FRISKIES TAVUKLU ET KEDI 1.7KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "JUNGLE KUZU ETLI KOPEK MAMASI 2.5KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "ROYAL CANIN FIT 32 KEDI MAMASI 2KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PRO PLAN KISIRLASTIRILMIS KEDI MAMASI 3KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "WHISKAS SOSLU KEDI MAMASI POUCH 85G",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "EVER CLEAN EXTRA STRONG KEDI KUMU 10L",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "GOURMET GOLD KIYILMIS SIGIR KONSERVE 85G",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "PEDIGREE KUCUK IRK KOPEK MAMASI 1.5KG",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "DREAMIES TAVUKLU KEDI ODUL BSK 60G",
+    "label": "PET_CARE"
+  },
+  {
+    "text": "C.SUYU",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "BUL.TAB",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "CAM.DET",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "YUZ.TMZ",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "POR.COZ",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "YUMOS.KONS",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "YAG.COZ",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "BUL.DET",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "FAIRY PLAT. 60LI",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "FINISH QUANTUM TABLET 50LI",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "PRIL SIVI BULASIK DET 4KG",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "DOMESTOS DAG ESINTISI C.SUYU 750ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "ACE KLASIK CAMASIR SUYU 2L",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "ARIEL DAG ESINTISI TOZ DET 4.5KG",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "OMO SIVI CAMASIR DET. 1690ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "YUMOS EXTRA KONS YUMUSATICI 1440ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "CIF KREM AMONYAKLI 750ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "MARC YUZEY TEMIZLEYICI 2.5L",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "FAIRY PLATINUM BULASIK MAKINESI TABLETI 60LI",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "FINISH ORE B.MAKIN TABLETI 80LI",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "DOMESTOS ULTRA CAMASIR SUYU 750ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "YUMOS EXTRA KONSANTRE BAHAR TAZELIGI 1440ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "ARIEL PARLAK RENKLILER TOZ DETERJAN 4KG",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "PORCOZ KIREC VE PAS SOKUCU 1L",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "MR MUSCLE MUTFAK YAG SOKUCU SPREY 750ML",
+    "label": "CLEANING_HOUSEHOLD"
+  },
+  {
+    "text": "TUV.KAG",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "KAG.HVL",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "PKT.PEC",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "KOTX.PED",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "ORK.GCE",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "CEP.MND",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SERVI.PEC",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "KOKL.TKAG",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SOLO T.KAG 16LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SELPAK 3 KATLI TUV.KAGIDI 24LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "FAMILIA KAGIT HAVLU 12LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "PAPIA 4 KATLI KAGIT HAVLU 6LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "KOTEX ULTRA NORMAL PED 24LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "ORKID PLATINUM GECE PED 16LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SOFFIO TUVALET KAGIDI 32LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SOLO DEV RULO HAVLU 1LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SELPAK CEP MENDILI 10LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "PAPIA DEV PECETE 200LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SOLO AKILLI SECIM TUVALET KAGIDI 32LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SELPAK UC KATLI KAGIT HAVLU 8LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "ORKID PLATINUM COK LU KANATLI PED 24LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "FAMILIA PLUS TUVALET KAGIDI 24LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "KOTEX ULTRA EKSTRA UZUN GECE PEDI 12LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "MARA MASA SERVIS PECETESI 100LU",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "CARREFOUR ECO TUVALET KAGIDI 16LI",
+    "label": "PAPER_HYGIENE"
+  },
+  {
+    "text": "SAM.ELID",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "DIS.MAC",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "DUS.JEL",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "BLK.SABN",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "COLG.TRZ",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "GILL.PERC",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "NIVE.DEOD",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "SAC.KRMI",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "COLGATE DIS MAC. 75ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "SENSODYNE HIZLI RAHATLAMA 75ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "SIGNAL WHITE NOW DIS MAC 75ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "ELIDOR GUCLU PARLAK SAMPUAN 500ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "CLEAR MEN NANE FERAH SAMPUAN 350ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "PALMOLIVE DUS JELI AROMA 500ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "DERBY PERMATIK BICAK 5LI",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "GILLETTE BLUE3 TRAS BICAGI 3LU",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "NIVEA MEN FRESH DEODORANT 150ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "DURU SAF DOGAL GUVEN SABUN 4X150G",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "HEAD SHOULDERS KLASIK BAKIM SAMPUAN 400ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "SENSODYNE TAM KORUMA DIS MACUNU 75ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "IPANA PRO EXPERT DIS MACUNU 75ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "DOVE NEMLENDIRICI SIVI SABUN 500ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "GILLETTE MACH3 YEDEK TRAS BICAGI 4LU",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "REXONA MEN INVISIBLE DEODORANT SPREY 150ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "LE PETIT MARSEILLAIS VANILYA DUS JELI 400ML",
+    "label": "PERSONAL_CARE_COSMETICS"
+  },
+  {
+    "text": "ALM.FOLY",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "STR.FILM",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "PISR.KAG",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "COP.TORB",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "DURC.PIL",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "LED.AMP",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "MUT.SGNR",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "OTO.KOKU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "KOROPLAST ALUM.FOLYO 15M",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "KOROPLAST STREC FILM 30M",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "KOROPLAST PISIRME KAGIDI 16LI",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "PAREX BUZDOLABI POSETI 4LU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "KOROPLAST BUYUK COP TORBASI 10LU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "DURACELL AAA INCE PIL 4LU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "PANASONIC KALEM PIL AA 4LU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "PHILIPS 9W LED AMPUL BEYAZ",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "SCOTCH BRITE OLUKLU SUNGER 2LI",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "VILEDA CIDDI SARI BEZ 3LU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "KOROPLAST KESILMIS PISIRME KAGIDI 16LI",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "DURACELL ALKALIN AA 4LU KALEM PIL",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "PAREX ORTA BOY COP TORBASI 15LI",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "PHILIPS LED ESSENTIAL BULB 11W",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "SCOTCH BRITE YESIL BULASIK SUNGERI 3LU",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "KOROPLAST STREC FILM 50 METRE",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "VILEDA STYLE BULASIK ELDIVENI M BOY",
+    "label": "HOME_KITCHEN"
+  },
+  {
+    "text": "BBN.CRAP",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "BYN.SLIP",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "PATK.COR",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "MUT.BEZI",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "PLAJ.TRL",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "ERKK.ATLT",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "BANY.HVLU",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "TERL.EVA",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "PENTI 20 DEN KULOTLU CORAP",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "BOLLUCU ERKEK SOKET CORAP 3LU",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "TUTKU ERKEK RIBANA ATLET M",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "KOM KADIN SLIP KULOT 2LI",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "KOTON KISA SOKET CORAP 5LI",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "GEZER KADIN EV TERLIGI 38",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "TWIGY ERKEK PLAJ TERLIGI 42",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "PAREX MIKROFIBER MUTFAK BEZI 3LU",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "MADAME COCO EL HAVLUSU 50X70",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "SILVA MIKROFIBER CAM BEZI 1LI",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "PENTI MAT KORSELI KULOTLU CORAP",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "GEZER BAYAN SABO TERLIK 37",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "TUTKU PAMUKLU ERKEK BOKSER L",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "MIKROFIBER KURULAMA MUTFAK BEZI 40X60",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "ERKEK BAMBU PATIK CORAP 3LU",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "COTTON BOX PAMUK BANYO HAVLUSU",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "ENGLISH HOME SAC KURULAMA TULBENTI",
+    "label": "CLOTHING_TEXTILE"
+  },
+  {
+    "text": "ALSV.PST",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "POS.PLAS",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "KBRT.KAV",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "CLIP.CKMK",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "UHU.STK",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "FOS.KALM",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "A4.FOT.K",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "KOLI.BND",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "MARKET ALISVERIS POSETI B",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "MIGROS KORUKLU POSET 1AD",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "KAV KIBRIT KUTU 10LU",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "CRICKET ELEKTRONIK CAKMAK",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "BIC MANYETOLU CAKMAK 1AD",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "FABER CASTELL FOSFORLU KALEM",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "PRITT STICK YAPISTIRICI 22G",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "COPEX A4 FOTOKOPI KAGIDI 500LU",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "MAS SEFFAF KOLI BANDI 45X100",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "ROTRING VISUMAX UCKU KALEM 0.7",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "STANDART ALISVERIS POSETI",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "CRICKET TASLI CAKMAK",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "BIC UZUN CAKMAK SARI",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "FABER CASTELL SINAV SILGISI BEYAZ",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "NAVIGATOR 80GR A4 FOTOKOPI KAGIDI 500LU",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "PRITT COK AMACLI YAPISTIRICI HAMUR",
+    "label": "OTHER_NONFOOD"
+  },
+  {
+    "text": "KAV KAVLAN KIBRIT 5LI",
+    "label": "OTHER_NONFOOD"
+  }
+]

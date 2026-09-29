@@ -26,6 +26,11 @@ public struct ParsedItemDTO: Sendable, Identifiable, Codable {
     public var packageUnit: UnitType?
     public var packCount: Int?
 
+    // Zengin Kategori Özellikleri (Veri Koruma & Telemetri Standardı)
+    public var categoryRawCode: String?
+    public var categoryName: String?
+    public var categoryEmoji: String?
+
     public init(
         id: UUID = UUID(),
         rawName: String,
@@ -40,7 +45,10 @@ public struct ParsedItemDTO: Sendable, Identifiable, Codable {
         boundingBox: NormalizedRect = NormalizedRect(originX: 0, originY: 0, width: 0, height: 0),
         packageQuantity: Decimal? = nil,
         packageUnit: UnitType? = nil,
-        packCount: Int? = nil
+        packCount: Int? = nil,
+        categoryRawCode: String? = nil,
+        categoryName: String? = nil,
+        categoryEmoji: String? = nil
     ) {
         self.id = id
         self.rawName = rawName
@@ -56,5 +64,8 @@ public struct ParsedItemDTO: Sendable, Identifiable, Codable {
         self.packageQuantity = packageQuantity
         self.packageUnit = packageUnit
         self.packCount = packCount
+        self.categoryRawCode = categoryRawCode
+        self.categoryName = categoryName
+        self.categoryEmoji = categoryEmoji
     }
 }

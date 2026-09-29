@@ -26,6 +26,11 @@ public final class ShoppingItem {
     public var packageUnitRaw: String?
     public var packCount: Int?
 
+    // Zengin Kategori Özellikleri (Veri Koruma & Telemetri Standardı)
+    public var categoryRawCode: String?
+    public var categoryName: String?
+    public var categoryEmoji: String?
+
     public var category: Category?
     public var trip: ShoppingTrip?
 
@@ -54,7 +59,10 @@ public final class ShoppingItem {
         confidenceScore: Double = 1.0,
         packageQuantity: Decimal? = nil,
         packageUnit: UnitType? = nil,
-        packCount: Int? = nil
+        packCount: Int? = nil,
+        categoryRawCode: String? = nil,
+        categoryName: String? = nil,
+        categoryEmoji: String? = nil
     ) {
         self.id = id
         self.rawName = rawName
@@ -71,5 +79,8 @@ public final class ShoppingItem {
         self.packageQuantity = packageQuantity
         self.packageUnitRaw = packageUnit?.rawValue
         self.packCount = packCount
+        self.categoryRawCode = categoryRawCode ?? category?.rawCode
+        self.categoryName = categoryName ?? category?.name
+        self.categoryEmoji = categoryEmoji ?? category?.emoji
     }
 }

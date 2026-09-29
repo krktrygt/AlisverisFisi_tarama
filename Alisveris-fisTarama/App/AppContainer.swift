@@ -38,8 +38,30 @@ public final class AppContainer: ObservableObject {
             self.persistenceActor = ReceiptPersistenceActor(modelContainer: container)
             self.imageDiskManager = ReceiptImageDiskManager.shared
             self.receiptMLService = ReceiptMLInferenceService.shared
+
+            Self.seedStandardCategories(in: container)
         } catch {
             fatalError("SwiftData ModelContainer başlatılamadı: \(error.localizedDescription)")
+        }
+    }
+
+    public static func seedStandardCategories(in container: ModelContainer) {
+        let context = container.mainContext
+        let fetchDescriptor = FetchDescriptor<Category>()
+        guard let existing = try? context.fetch(fetchDescriptor) else { return }
+        let existingCodes = Set(existing.compactMap { $0.rawCode })
+
+        var didInsert = false
+        for standard in StandardCategory.allCases {
+            if !existingCodes.contains(standard.rawCode) {
+                let cat = Category(standard: standard)
+                context.insert(cat)
+                didInsert = true
+            }
+        }
+
+        if didInsert {
+            try? context.save()
         }
     }
 }

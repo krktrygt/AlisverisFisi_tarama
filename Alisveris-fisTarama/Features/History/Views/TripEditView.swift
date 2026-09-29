@@ -142,6 +142,33 @@ private struct ItemRowEditView: View {
                 Text("\(CurrencyNormalizer.format(item.quantity)) \(item.unit.localizedTitle)")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+
+                Menu {
+                    ForEach(StandardCategory.allCases, id: \.self) { cat in
+                        Button {
+                            item.categoryRawCode = cat.rawCode
+                            item.categoryName = cat.displayName
+                            item.categoryEmoji = cat.emoji
+                        } label: {
+                            Label("\(cat.emoji) \(cat.displayName)", systemImage: cat.iconName)
+                        }
+                    }
+                } label: {
+                    HStack(spacing: 3) {
+                        Text(item.categoryEmoji ?? item.category?.emoji ?? "🛍️")
+                        Text(item.categoryName ?? item.category?.name ?? "Kategori")
+                            .font(.caption2)
+                            .lineLimit(1)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.system(size: 8))
+                    }
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(Capsule())
+                }
+                .buttonStyle(.plain)
+
                 Spacer()
                 TextField("Tutar", text: $priceText)
                     .keyboardType(.decimalPad)
