@@ -40,3 +40,20 @@ Icon\r
 *.env.*
 *.p12
 *.mobileprovision
+
+# Logs & Test Results (Test ve Hata Ayıklama Günlükleri)
+*.log
+test_log.txt
+DevLogs/
+*.xcresult
+
+# Imported User Data & Privacy Sensitive Assets (Gerçek Fiş ve Taslak Verileri)
+ReceiptImages_Imported/
+ReceiptImages/
+draft.json
+*.draft.json
+
+# Temporary & Workspace Data
+.swiftpm/
+*.moved-aside
+
